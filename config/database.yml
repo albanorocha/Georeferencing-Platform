@@ -1,0 +1,26 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: iMedia-dev
+  pool: 5
+  host: localhost
+  username: postgres
+  password: postgres
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: iMedia-test
+  pool: 5
+  host: localhost
+  username: postgres
+  password: postgres
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: iMedia-prod
+  pool: 5
+  host: localhost
+  username: postgres
+  password: postgres

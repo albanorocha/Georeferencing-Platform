@@ -1,0 +1,34 @@
+<h1>Listing outdoors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Code</th>
+      <th>Description</th>
+      <th>Address</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @outdoors.each do |outdoor| %>
+      <tr>
+        <td><%= outdoor.name %></td>
+        <td><%= outdoor.code %></td>
+        <td><%= outdoor.description %></td>
+        <td><%= outdoor.address %></td>
+        <td><%= link_to 'Show', outdoor %></td>
+        <td><%= link_to 'Edit', edit_outdoor_path(outdoor) %></td>
+        <td><%= link_to 'Destroy', outdoor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= image_tag "http://maps.googleapis.com/maps/api/staticmap?size=450x300&sensor=false&zoom=12#{Outdoor.printMarkers}"%>
+
+
+<%= link_to 'New Outdoor', new_outdoor_path %>
