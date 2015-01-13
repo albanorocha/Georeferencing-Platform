@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @outdoor.name %>
+</p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @outdoor.code %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @outdoor.description %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @outdoor.address %>
+</p>
+
+
+<%= image_tag "http://maps.googleapis.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@outdoor.latitude}%2C#{@outdoor.longitude}" %>
+
+</br>
+
+<%= link_to 'Edit', edit_outdoor_path(@outdoor) %> |
+<%= link_to 'Back', outdoors_path %>
