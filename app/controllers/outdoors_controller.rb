@@ -7,10 +7,18 @@ class OutdoorsController < ApplicationController
 
   def index
     @outdoors = Outdoor.all
+    @hash = Gmaps4rails.build_markers(@outdoors) do |outdoor, marker|
+      marker.lat outdoor.latitude
+      marker.lng outdoor.longitude
+    end
     respond_with(@outdoors)
   end
 
   def show
+    @hash = Gmaps4rails.build_markers(@outdoor) do |outdoor, marker|
+      marker.lat outdoor.latitude
+      marker.lng outdoor.longitude
+    end
     respond_with(@outdoor)
   end
 
