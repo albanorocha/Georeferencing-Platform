@@ -1,92 +1,272 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>IMedia</title>
+  <title>iMedia - Soluções em MOOH</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= favicon_link_tag "fav.ico", type: 'image/vnd.microsoft.icon'%>
   <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="../assets/css/ol.css" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" />
+
+  <style type="text/css">
+      body { overflow: hidden; }
+
+      .navbar-offset { margin-top: 50px; }
+      #map { position: absolute; top: 50px; bottom: 0px; left: 0px; right: 0px; }
+      #map .ol-zoom { font-size: 1.2em; }
+
+      .zoom-top-opened-sidebar { margin-top: 5px; }
+      .zoom-top-collapsed { margin-top: 45px; }
+
+      .mini-submenu{
+        display:none;  
+        background-color: rgba(255, 255, 255, 0.46);
+        border: 1px solid rgba(0, 0, 0, 0.9);
+        border-radius: 4px;
+        padding: 9px;  
+        /*position: relative;*/
+        width: 42px;
+        text-align: center;
+      }
+
+      .mini-submenu-left {
+        position: absolute;
+        top: 60px;
+        left: .5em;
+        z-index: 40;
+      }
+
+      #map { z-index: 35; }
+
+      .sidebar { z-index: 45; }
+
+      .main-row { position: relative; top: 0; }
+
+      .mini-submenu:hover{
+        cursor: pointer;
+      }
+
+      .slide-submenu{
+        background: rgba(0, 0, 0, 0.45);
+        display: inline-block;
+        padding: 0 8px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+  </style>
   
-  	<!-- script references -->
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-		<script src="assets/javascritps/bootstrap.min.js"></script>
-		<script src="http://maps.googleapis.com/maps/api/js?sensor=false&extension=.js&output=embed"></script>
-		<script src="assets/javascritps/scripts.js"></script>
+  <script type="text/javascript" src="../assets/js/ol.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    
+  <script type="text/javascript">
+
+      function applyMargins() {
+        var leftToggler = $(".mini-submenu-left");
+        if (leftToggler.is(":visible")) {
+          $("#map .ol-zoom")
+            .css("margin-left", 0)
+            .removeClass("zoom-top-opened-sidebar")
+            .addClass("zoom-top-collapsed");
+        } else {
+          $("#map .ol-zoom")
+            .css("margin-left", $(".sidebar-left").width())
+            .removeClass("zoom-top-opened-sidebar")
+            .removeClass("zoom-top-collapsed");
+        }
+      }
+
+      function isConstrained() {
+        return $(".sidebar").width() == $(window).width();
+      }
+
+      function applyInitialUIState() {
+        if (isConstrained()) {
+          $(".sidebar-left .sidebar-body").fadeOut('slide');
+          $('.mini-submenu-left').fadeIn();
+        }
+      }
+
+      $(function(){
+        $('.sidebar-left .slide-submenu').on('click',function() {
+          var thisEl = $(this);
+          thisEl.closest('.sidebar-body').fadeOut('slide',function(){
+            $('.mini-submenu-left').fadeIn();
+            applyMargins();
+          });
+        });
+
+        $('.mini-submenu-left').on('click',function() {
+          var thisEl = $(this);
+          $('.sidebar-left .sidebar-body').toggle('slide');
+          thisEl.hide();
+          applyMargins();
+        });
+
+        $(window).on("resize", applyMargins);
+
+        var map = new ol.Map({
+          target: "map",
+          layers: [
+            new ol.layer.Tile({
+              source: new ol.source.OSM()
+            })
+          ],
+          view: new ol.View({
+            center: [0, 0],
+            zoom: 2
+          })
+        });
+        applyInitialUIState();
+        applyMargins();
+      });
+    </script>
   
 </head>
 <body>
- 
+
 <!-- begin template -->
-<div class="navbar navbar-custom navbar-fixed-top">
 
-  <div class="navbar-header">   
-<%= link_to(root_path) do %>
+  <div class="container">
+      <nav class="navbar navbar-fixed-top navbar-default" role="navigation">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            
+          <%= link_to(root_path) do %>
    <%= image_tag("logo-site.fw.png",  :class => "") if @logo.nil? %>
-  <%= image_tag(@logo.image.url(:logo),  :class => "") unless @logo.nil? %>
-<% end %>
-   
-      <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-    </div>
-    <div class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Sobre</a></li>
-        <li><a href="#">Contato</a></li>
-
-        <li>&nbsp;</li>
-      </ul>
-      <form class="navbar-form">
-        <div class="form-group" style="display:inline;">
-          <div class="input-group">
-            <div class="input-group-btn">
-              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></button>
-              <ul class="dropdown-menu">
-                <li><a href="#">Outdoor</a></li>
-                <li><a href="#">Busdoor</a></li>
-                <li><a href="#">Indoor</a></li>
-              </ul>
-            </div>
-            <input type="text" class="form-control" placeholder="O que você procura?">
-            <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span> </span>
+  <%= image_tag(@logo.image.url(:logo),  :class => "navbar-brand") unless @logo.nil? %>
+<% end %>  
+        
+          
           </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+           
+            <form class="navbar-form navbar-left" role="search">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="O que você procura?">
+              </div>
+              <button type="submit" class="btn btn-default">Pesquisar</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+              
+              <li><a href="#">Sobre</a></li>
+              <li><a href="#">Contato</a></li>
+
+              
+                        
+  <% if user_signed_in? %>
+  	<li>
+            <a href="#">  <strong><%= current_user.email %></strong></a>
+    </li>
+    <li> <%= link_to "Sair", destroy_user_session_path, method: :delete %> </li>
+  <% else %>
+    <li> <%= link_to "Entrar", new_user_session_path  %> </li>
+  <% end %>
+                        
+              
+            </ul>
+            </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+          </nav>
         </div>
-      </form>
-    </div>
-</div>
-  
-  
-<div class="container-fluid" id="main">
+
+      <div class="navbar-offset"></div>
+      <div id="map">
+      </div>
+      <div class="row main-row">
+        <div class="col-sm-4 col-md-3 sidebar sidebar-left pull-left">
+          <div class="panel-group sidebar-body" id="accordion-left">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" href="#layers">
+                    <i class="fa fa-list-alt"></i>
+                    Veículos de Propaganda
+                  </a>
+                  <span class="pull-right slide-submenu">
+                    <i class="fa fa-chevron-left"></i>
+                  </span>
+                </h4>
+              </div>
+              <div id="layers" class="panel-collapse collapse in">
+                <div class="panel-body list-group">
+ 
+                  <%= link_to(outdoors_path, :class=> "list-group-item" ) do %>
+                            <i class="fa fa-globe"></i> Outdoors
+                          <% end %>
+ 
+                  
+                  <a href="#" class="list-group-item">
+                    <i class="fa fa-globe"></i> Busdoor
+                  </a>
+                  <a href="#" class="list-group-item">
+                    <i class="fa fa-globe"></i> Indoor
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a data-toggle="collapse" href="#properties">
+                    <i class="fa fa-list-alt"></i>
+                    iMedia
+                  </a>
+                </h4>
+              </div>
+              <div id="properties" class="panel-collapse collapse in">
+                <div class="panel-body">
+                  <div class="container-fluid">
   <div class="row">
 
-    <div id="map-canvas"></div>
-  
+                  <%= yield %>
+                  
+</div>
+                  
+                  
   </div>
-  </div>
+</div> 
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mini-submenu mini-submenu-left pull-left">
+        <i class="fa fa-list-alt"></i>
+      </div>
+    </div>
   
-<!-- end template -->  
-  
-   <h1> iMedia </h1>
+<!-- end template
 
   <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-
-  <ul>
-  <li> <%= link_to "Home", root_path %> </li>
-  <li> <%= link_to "Outdoor", outdoors_path %> </li>
-  <% if user_signed_in? %>
-  	<p> Logged in as <strong><%= current_user.email %></strong>. </p>
-    <li> <%= link_to "Logout", destroy_user_session_path, method: :delete %> </li>
-  <% else %>
-    <li> <%= link_to "Login", new_user_session_path  %> </li>
-  <% end %>
-  </ul>
+    <p class="alert"><%= alert %></p> 
 
 
-<%= yield %>
+-->  
 
+  <div class="well corpo">
+							<% flash.each do |name, msg| %>
+						        <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+						          <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+						        </div>
+					        <% end %>
+					        
+					        <div id="alert-jquery" class="alert alert-success" style="display: none;">
+					          
+					        </div>
   
 </body>
 </html>
