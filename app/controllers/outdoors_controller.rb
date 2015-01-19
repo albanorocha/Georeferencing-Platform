@@ -10,6 +10,7 @@ class OutdoorsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@outdoors) do |outdoor, marker|
       marker.lat outdoor.latitude
       marker.lng outdoor.longitude
+      marker.title   outdoor.code
     end
     respond_with(@outdoors)
   end

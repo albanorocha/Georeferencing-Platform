@@ -38,11 +38,29 @@
 
 <script type="text/javascript">
   handler = Gmaps.build('Google');
-  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-    markers = handler.addMarkers(<%=raw @hash.to_json %>);
-    handler.bounds.extendWith(markers);
-    handler.fitMapToBounds();
-  });
+  handler.buildMap({ 
+    provider: {}, 
+    internal: {id: 'map'}
+  }, function(){
+      markers = handler.addMarkers(<%=raw @hash.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      
+      google.maps.event.addListener(handler.getMap(), 'click', function(event) {
+        placeMarker(event.latLng);
+      });
+    }
+  );
+
+  function placeMarker(location) {
+    var marker = new google.maps.Marker({
+        position: location,
+        map: handler.getMap(),
+        draggable:true,
+        title:"Drag me!"
+    });
+  }
+
 </script>
 
 <%= link_to 'New Outdoor', new_outdoor_path %>
