@@ -3,7 +3,8 @@
 
 <h1>Listing outdoors</h1>
 
-<table>
+<div class="table-responsive">     
+<table class="table table table-hover">
   <thead>
     <tr>
       <th>Name</th>
@@ -22,27 +23,27 @@
         <td><%= outdoor.description %></td>
         <td><%= outdoor.address %></td>
         <td><%= link_to 'Show', outdoor %></td>
-        <td><%= link_to 'Edit', edit_outdoor_path(outdoor) %></td>
+        <td><%= link_to 'Edit', edit_dashboard_outdoor_path(outdoor) %></td>
         <td><%= link_to 'Destroy', outdoor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<div style='width: 800px;'>
-  <div id="map" style='width: 800px; height: 400px;'></div>
 </div>
 
 
 <script type="text/javascript">
   handler = Gmaps.build('Google');
-  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+  handler.buildMap({ provider: { 
+    panControl: true,
+    panControlOptions: {
+        position: google.maps.ControlPosition.TOP_RIGHT
+    }}, 
+    internal: {id: 'map'}}, function(){
     markers = handler.addMarkers(<%=raw @hash.to_json %>);
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
   });
 </script>
 
-<%= link_to 'New Outdoor', new_outdoor_path %>
+<%= link_to 'New Outdoor', new_dashboard_outdoor_path %>

@@ -1,4 +1,4 @@
-class OutdoorsController < ApplicationController
+class Maps::OutdoorsController < Maps::MapsController
   before_action :authenticate_user!
   
   before_action :set_outdoor, only: [:show, :edit, :update, :destroy]
@@ -6,7 +6,7 @@ class OutdoorsController < ApplicationController
   respond_to :html
 
   def index
-    @outdoors = Outdoor.all
+    @outdoors = Dashboard::Outdoor.all
     @hash = Gmaps4rails.build_markers(@outdoors) do |outdoor, marker|
       marker.lat outdoor.latitude
       marker.lng outdoor.longitude
@@ -23,7 +23,7 @@ class OutdoorsController < ApplicationController
   end
 
   def new
-    @outdoor = Outdoor.new
+    @outdoor = Dashboard::Outdoor.new
     respond_with(@outdoor)
   end
 
@@ -31,7 +31,7 @@ class OutdoorsController < ApplicationController
   end
 
   def create
-    @outdoor = Outdoor.new(outdoor_params)
+    @outdoor = Dashboard::Outdoor.new(outdoor_params)
     @outdoor.save
     respond_with(@outdoor)
   end
@@ -48,7 +48,7 @@ class OutdoorsController < ApplicationController
 
   private
     def set_outdoor
-      @outdoor = Outdoor.find(params[:id])
+      @outdoor = Dashboard::Outdoor.find(params[:id])
     end
 
     def outdoor_params
