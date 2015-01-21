@@ -1,0 +1,10 @@
+<h1>New outdoor</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', dashboard_outdoors_path %>
+
+
+<%= javascript_tag do %>
+  buildNewMap(<%= raw  @hash.to_json %>);
+<% end %>

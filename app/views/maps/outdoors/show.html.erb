@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @outdoor.name %>
+</p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @outdoor.code %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @outdoor.description %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @outdoor.address %>
+</p>
+
+<%= link_to 'Edit', edit_dashboard_outdoor_path(@outdoor) %> |
+<%= link_to 'Back', dashboard_outdoors_path %>
+
+
+
+<%= javascript_tag do %>
+  buildMap(<%= raw  @hash.to_json %>);
+<% end %>

@@ -1,6 +1,7 @@
 <h1>Listing outdoors</h1>
 
-<table>
+<div class="table-responsive">     
+<table class="table table table-hover">
   <thead>
     <tr>
       <th>Name</th>
@@ -19,22 +20,20 @@
         <td><%= outdoor.description %></td>
         <td><%= outdoor.address %></td>
         <td><%= link_to 'Show', outdoor %></td>
-        <td><%= link_to 'Edit', edit_outdoor_path(outdoor) %></td>
+        <td><%= link_to 'Edit', edit_dashboard_outdoor_path(outdoor) %></td>
         <td><%= link_to 'Destroy', outdoor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<div style='width: 800px;'>
-  <div id="map2" style='width: 800px; height: 400px;'></div>
 </div>
 
-<%= link_to 'New Outdoor', new_outdoor_path %>
-
+<%= link_to 'New Outdoor', new_dashboard_outdoor_path %>
 
 <%= javascript_tag do %>
-  buildMap(<%= raw  @hash.to_json %>);
+  <% if @hash.empty? %>
+    buildEmptyMap();
+  <% else %>
+    buildMap(<%= raw  @hash.to_json %>);
+  <% end %>
 <% end %>
