@@ -2,16 +2,11 @@ class Maps::OutdoorsController < Maps::MapsController
   before_action :authenticate_user!
   
   before_action :set_outdoor, only: [:show, :edit, :update, :destroy]
+  before_action :set_markers, only: [:index, :new]
 
   respond_to :html
 
   def index
-    @outdoors = Dashboard::Outdoor.all
-    @hash = Gmaps4rails.build_markers(@outdoors) do |outdoor, marker|
-      marker.lat outdoor.latitude
-      marker.lng outdoor.longitude
-      marker.title   outdoor.code
-    end
     respond_with(@outdoors)
   end
 
@@ -25,20 +20,21 @@ class Maps::OutdoorsController < Maps::MapsController
 
   def new
     @outdoor = Dashboard::Outdoor.new
-    @outdoors = Dashboard::Outdoor.all
-    @hash = Gmaps4rails.build_markers(@outdoors) do |outdoor, marker|
-      marker.lat outdoor.latitude
-      marker.lng outdoor.longitude
-      marker.title   outdoor.code
-    end
-    
+
     respond_with(@outdoor)
   end
 
   def edit
-    @hash = Gmaps4rails.build_markers(@outdoor) do |outdoor, marker|
+    @outdoors = Dashboard::Outdoor.where.not(id: @outdoor)
+    @hash = Gmaps4rails.build_markers(@outdoors) do |outdoor, marker|
       marker.lat outdoor.latitude
       marker.lng outdoor.longitude
+      marker.title   outdoor.code
+      marker.picture({ 
+        url:    "/assets/marcador32.png",
+        width:  32,
+        height: 32
+      })
     end
   end
 
@@ -61,6 +57,20 @@ class Maps::OutdoorsController < Maps::MapsController
   private
     def set_outdoor
       @outdoor = Dashboard::Outdoor.find(params[:id])
+    end
+
+    def set_markers
+      @outdoors = Dashboard::Outdoor.all
+      @hash = Gmaps4rails.build_markers(@outdoors) do |outdoor, marker|
+        marker.lat outdoor.latitude
+        marker.lng outdoor.longitude
+        marker.title   outdoor.code
+        marker.picture({ 
+          url:    "/assets/marcador32.png",
+          width:  32,
+          height: 32
+        })
+      end
     end
 
     def outdoor_params

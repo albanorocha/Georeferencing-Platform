@@ -6,5 +6,5 @@
 <%= link_to 'Back', dashboard_outdoors_path %>
 
 <%= javascript_tag do %>
-  buildMap(<%= raw  @hash.to_json %>);
+  buildEditMap(<%= raw  @hash.to_json %>, <%= @outdoor.latitude %>, <%= @outdoor.longitude %>);
 <% end %>
