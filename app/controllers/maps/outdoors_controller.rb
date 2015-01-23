@@ -36,6 +36,10 @@ class Maps::OutdoorsController < Maps::MapsController
   end
 
   def edit
+    @hash = Gmaps4rails.build_markers(@outdoor) do |outdoor, marker|
+      marker.lat outdoor.latitude
+      marker.lng outdoor.longitude
+    end
   end
 
   def create

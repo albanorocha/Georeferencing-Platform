@@ -28,7 +28,7 @@
 </table>
 </div>
 
-<%= link_to 'New Outdoor', new_dashboard_outdoor_path %>
+<%= link_to 'New Outdoor', new_dashboard_outdoor_path, 'data-no-turbolink' => true %>
 
 <%= javascript_tag do %>
   <% if @hash.empty? %>

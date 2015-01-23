@@ -3,4 +3,8 @@
 <%= render 'form' %>
 
 <%= link_to 'Show', @outdoor %> |
-<%= link_to 'Back', outdoors_path %>
+<%= link_to 'Back', dashboard_outdoors_path %>
+
+<%= javascript_tag do %>
+  buildMap(<%= raw  @hash.to_json %>);
+<% end %>
