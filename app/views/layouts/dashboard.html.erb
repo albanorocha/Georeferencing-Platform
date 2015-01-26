@@ -13,97 +13,113 @@
 </head>
 <body>
 
-<!-- begin template -->
-
-  <div class="container">
-      <nav class="navbar navbar-fixed-top navbar-default" role="navigation">
-        <div class="container-fluid">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            </button>
-            
-           <%= link_to(root_path) do %>
-             <%= image_tag("logo-site.fw.png",  :class => "") if @logo.nil? %>
-            <%= image_tag(@logo.image.url(:logo),  :class => "navbar-brand") unless @logo.nil? %>
-           <% end %>  
-        
-          
-          </div>
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-           
-            <form class="navbar-form navbar-left" role="search">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="O que você procura?">
-              </div>
-              <button type="submit" class="btn btn-default">Pesquisar</button>
-            </form>
-            <ul class="nav navbar-nav navbar-right">
-              
-              <li><a href="#">Sobre</a></li>
-              <li><a href="#">Contato</a></li>
-
-              
-                        
-              <% if user_signed_in? %>
-                <li>
-                        <a href="#">  <strong><%= current_user.email %></strong></a>
-                </li>
-                <li> <%= link_to "Sair", destroy_user_session_path, method: :delete %> </li>
-              <% else %>
-                <li> <%= link_to "Entrar", new_user_session_path  %> </li>
-              <% end %>
-                        
-              
-            </ul>
-            </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-          </nav>
-        </div>
-
-
-                  <%= yield %>
-                  
-</div>
-                  
-                  
-  </div>
-</div> 
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+  <!-- begin template -->
+  <nav class="navbar navbar-fixed-top navbar-default" role="navigation">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to(root_path) do %>
+        <%= image_tag("logo-site.png",  :class => "") if @logo.nil? %>
+        <%= image_tag(@logo.image.url(:logo),  :class => "navbar-brand") unless @logo.nil? %>
+        <% end %>  
       </div>
-      <div class="mini-submenu mini-submenu-left pull-left">
-        <i class="fa fa-list-alt"></i>
-      </div>
-    </div>
-  
-<!-- end template
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <form class="navbar-form navbar-left" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="O que você procura?">
+          </div>
+        </form>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="#">Sobre</a>
+          </li>
+          <li>
+            <a href="#">Contato</a>
+          </li>
+          <% if user_signed_in? %>
+          <li>
+            <a href="#">  <strong><%= current_user.email %></strong></a>
+          </li>
+          <li>
+            <%= link_to "Sair", destroy_user_session_path, method: :delete %> 
+          </li>
+          <% else %>
+          <li> 
+            <%= link_to "Entrar", new_user_session_path  %>
+          </li>
+          <% end %>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
 
   <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p> 
+  <p class="alert"><%= alert %></p> 
+
+  <div class="container">
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        
+                <%= yield %>
+        
+      </div>
+
+    </div> <!-- /container -->
 
 
--->  
+    <div class="container">
 
-  <div class="well corpo">
-							<% flash.each do |name, msg| %>
-						        <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
-						          <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
-						        </div>
-					        <% end %>
-					        
-					        <div id="alert-jquery" class="alert alert-success" style="display: none;">
-					          
-					        </div>
-  
+      <div class="page-header">
+        <h1>Non-responsive Bootstrap</h1>
+        <p class="lead">Disable the responsiveness of Bootstrap by fixing the width of the container and using the first grid system tier. <a href="http://getbootstrap.com/getting-started/#disable-responsive">Read the documentation</a> for more information.</p>
+      </div>
+
+      <h3>What changes</h3>
+      <p>Note the lack of the <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code>, which disables the zooming aspect of sites in mobile devices. In addition, we reset our container's width and are basically good to go.</p>
+
+      <h3>Regarding navbars</h3>
+      <p>As a heads up, the navbar component is rather tricky here in that the styles for displaying it are rather specific and detailed. Overrides to ensure desktop styles display are not as performant or sleek as one would like. Just be aware there may be potential gotchas as you build on top of this example when using the navbar.</p>
+
+      <h3>Browsers, scrolling, and fixed elements</h3>
+      <p>Non-responsive layouts highlight a key drawback to fixed elements. <strong class="text-danger">Any fixed component, such as a fixed navbar, will not be scrollable when the viewport becomes narrower than the page content.</strong> In other words, given the non-responsive container width of 970px and a viewport of 800px, you'll potentially hide 170px of content.</p>
+      <p>There is no way around this as it's default browser behavior. The only solution is a responsive layout or using a non-fixed element.</p>
+
+      <h3>Non-responsive grid system</h3>
+      <div class="row">
+        <div class="col-xs-4">One third</div>
+        <div class="col-xs-4">One third</div>
+        <div class="col-xs-4">One third</div>
+      </div>
+
+    </div> <!-- /container -->
+
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <span class="copyright">Copyright &copy; iMedia 2015</span>
+      </div>
+      <div class="col-md-6">
+        <ul class="list-inline social-buttons">
+          <li><a href="#"><i class="fa fa-youtube-play "></i></a>
+          </li>
+          <li><a href="#"><i class="fa fa-facebook"></i></a>
+          </li>
+          <li><a href="#"><i class="fa fa-linkedin"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
 </body>
 </html>
