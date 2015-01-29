@@ -2,7 +2,7 @@ class Maps::OutdoorsController < Maps::MapsController
   before_action :authenticate_user!
   
   before_action :set_outdoor, only: [:show, :edit, :update, :destroy]
-  before_action :set_markers, only: [:index, :new]
+  before_action :set_markers, only: [:index, :new, :create]
 
   respond_to :html
 
@@ -62,6 +62,7 @@ class Maps::OutdoorsController < Maps::MapsController
     def set_markers
       @outdoors = Dashboard::Outdoor.all
       @hash = Gmaps4rails.build_markers(@outdoors) do |outdoor, marker|
+        marker.infowindow render_to_string(partial: "/maps/outdoors/infowindow", locals: { :outdoor => outdoor})
         marker.lat outdoor.latitude
         marker.lng outdoor.longitude
         marker.title   outdoor.code
@@ -74,6 +75,6 @@ class Maps::OutdoorsController < Maps::MapsController
     end
 
     def outdoor_params
-      params.require(:dashboard_outdoor).permit(:name, :code, :description, :address, :latitude, :longitude)
+      params.require(:dashboard_outdoor).permit(:image, :company, :code, :description, :address, :latitude, :longitude, :price, :avaliable)
     end
 end

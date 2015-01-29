@@ -1,10 +1,13 @@
 handler = undefined
 placeMarker = undefined
 geocoder = undefined
+marker = undefined
+listenerMapClick = undefined
+panorama = undefined;
 
 ### --------- Build maps, passed by html javascript call  ---------###
 @buildMap = (markers) ->
-  handler = Gmaps.build 'Google'
+  handler = Gmaps.build 'Google',  { markers: { clusterer: {gridSize: 20, maxZoom: 50} } }
   handler.buildMap {
     provider: { }, 
     internal: {id: 'map'}}
@@ -12,6 +15,12 @@ geocoder = undefined
       markers = handler.addMarkers(markers)
       handler.bounds.extendWith markers
       handler.fitMapToBounds()
+
+  panorama = handler.getMap().getStreetView()
+  panorama.setPov (
+    heading: 265
+    pitch: 0
+  )
 
 
 @buildEmptyMap = () ->
@@ -27,7 +36,7 @@ geocoder = undefined
 
 
 @buildEditMap = (markers, lat, lng) ->
-  handler = Gmaps.build 'Google'
+  handler = Gmaps.build 'Google',  { markers: { clusterer: {gridSize: 20, maxZoom: 50} } }
   geocoder = new google.maps.Geocoder()
   latLng = new google.maps.LatLng(lat, lng)
   handler.buildMap {
@@ -42,7 +51,7 @@ geocoder = undefined
 
 
 @buildNewMap = (markers) ->
-  handler = Gmaps.build 'Google'
+  handler = Gmaps.build 'Google',  { markers: { clusterer: {gridSize: 20, maxZoom: 50} } }
   geocoder = new google.maps.Geocoder()
   
   handler.buildMap {
@@ -53,7 +62,7 @@ geocoder = undefined
     internal: {id: 'map'}}
     , ->
       markers = handler.addMarkers(markers)
-      google.maps.event.addListenerOnce handler.getMap(), "click", (event) ->
+      listenerMapClick = google.maps.event.addListenerOnce handler.getMap(), "click", (event) ->
         placeNewMarker event.latLng
 ### ------------------- End builded maps ------------------- ###
 
@@ -71,7 +80,6 @@ placeNewMarker = (location) ->
     title: "Drag me!"
   )
   handler.getMap().panTo(location)
-  document.getElementById("dashboard_outdoor_name").value = "Novo Outdoor"
   document.getElementById("dashboard_outdoor_latitude").value = location.lat()
   document.getElementById("dashboard_outdoor_longitude").value = location.lng()
   google.maps.event.addListener marker, 'drag', (event) ->
@@ -98,7 +106,6 @@ showNewPosition = (location) ->
   When build a new map, convert the new marker "LatLng Position" to a "Formatted Address" 
 ###
 codeLatLng = (location) ->
-  console.log(location)
   lat = location.lat()
   lng = location.lng()
   latlng = new google.maps.LatLng(lat, lng)
@@ -109,4 +116,34 @@ codeLatLng = (location) ->
       if results[1]
         document.getElementById("dashboard_outdoor_address").value = results[1].formatted_address
     else
-      alert "Geocoder failed due to: " + status
+      alert "ERRO Geocoder: " + status
+
+###
+  When build a new map, convert the Address to a marker "LatLng Position"
+###
+@codeAddress = () ->
+  address = document.getElementById("dashboard_outdoor_address").value
+  geocoder.geocode
+    address: address
+  , (results, status) ->
+    if status is google.maps.GeocoderStatus.OK
+      google.maps.event.removeListener(listenerMapClick)
+      if marker != undefined
+        marker.setMap(null)
+      handler.getMap().setCenter results[0].geometry.location
+      placeNewMarker(results[0].geometry.location)
+    else
+      alert "ERRO Geocoder: " + status
+
+
+###
+  Build stree viewer panorama
+###
+@toggleStreetView = (lat, lng) ->
+  position = new google.maps.LatLng(lat, lng);
+  panorama.setPosition position
+  toggle = panorama.getVisible()
+  if toggle is false
+    panorama.setVisible true
+  else
+    panorama.setVisible false

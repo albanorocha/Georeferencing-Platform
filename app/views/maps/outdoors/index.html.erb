@@ -1,10 +1,10 @@
 <h1>Listing outdoors</h1>
 
+
 <div class="table-responsive">     
 <table class="table table table-hover">
   <thead>
     <tr>
-      <th>Name</th>
       <th>Code</th>
       <th>Description</th>
       <th>Address</th>
@@ -15,7 +15,6 @@
   <tbody>
     <% @outdoors.each do |outdoor| %>
       <tr>
-        <td><%= outdoor.name %></td>
         <td><%= outdoor.code %></td>
         <td><%= outdoor.description %></td>
         <td><%= outdoor.address %></td>

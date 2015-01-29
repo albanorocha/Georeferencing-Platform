@@ -1,0 +1,18 @@
+<div class="container-fluid">
+  <div class="row">
+  	<div class="col-md-6">
+    <%= image_tag outdoor.image_url(:thumb).to_s, :class => "img-thumbnail" %>
+  	</div>
+  	<div class="col-md-6">
+  		<h1 class="text-center"> <%= outdoor.code %> <small><%= outdoor.company %></small></h1>
+  		<p> <strong> <%= outdoor.address %></strong></p>
+  		<p> <strong>R$ <%= outdoor.price %> </strong></p>
+  	</div>
+  </div>
+  <div class="row">
+  	<p><%= outdoor.description %></p>
+  </div>
+   <%= link_to("javascript:toggleStreetView(#{outdoor.latitude}, #{outdoor.longitude});", :class => "btn btn-primary btn-sm", :title => "Clique para exibir no Street View!") do %>
+     S
+  <% end %>
+</div>

@@ -12,7 +12,7 @@
   <% end %>
 <div class="row">
    <div class="col-lg-6">
-      <%= f.text_field :name, placeholder: 'Nome', class: 'form-control' %>
+      <%= f.text_field :company, placeholder: 'Empresa', class: 'form-control' %>
   </div>
 
   <div class="col-lg-6">
@@ -27,15 +27,34 @@
 </div>
 
 <div class="row">
-  <div class="col-lg-12">
+  <div class="col-sm-10">
     <%= f.text_field :address, placeholder: 'Endereço', class: 'form-control' %>
+  </div>
+  <%= link_to('javascript:codeAddress();', :class => "btn btn-primary btn-sm", :id => :show_on_map, :title => "Clique para exibir no mapa!") do %>
+     S
+  <% end %>
+</div>
+
+<div class="row">
+  <div class="col-md-5">
+    <%= f.number_field :price, placeholder: 'Preço', class: 'form-control', :step => 'any' %>
+  </div>
+   <div class="col-md-5 checkbox">
+    <%= f.check_box :avaliable %>
+    Habilitado
   </div>
 </div>
 
+<div class="row">
+  <div class="col-md-12">
+    <%= f.file_field :image %>
+    <p class="help-block">Inserir imagem do outdoor.</p>
+  </div>
+</div>
 
-<%= f.hidden_field :latitude, placeholder: 'Latitude', class: 'form-control', :step => 'any' %>
+<%= f.hidden_field :latitude, class: 'form-control', :step => 'any' %>
 
-<%= f.hidden_field :longitude, placeholder: 'Longitude', class: 'form-control', :step => 'any' %>
+<%= f.hidden_field :longitude, class: 'form-control', :step => 'any' %>
 
 <div class="actions">
   <%= f.submit %>
