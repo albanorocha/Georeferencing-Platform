@@ -6,16 +6,12 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= favicon_link_tag "fav.ico", type: 'image/vnd.microsoft.icon'%>
   <%= csrf_meta_tags %>
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" />
-  <script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-  <script src="//maps.google.com/maps/api/js?v=3.13&amp;sensor=false&amp;libraries=geometry" type="text/javascript"></script>
-  <script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js' type='text/javascript'></script>
+
+
 </head>
 <body>
 
-  <!-- begin template -->
+ <!-- begin template -->
 
   <div class="container">
     <nav class="navbar navbar-fixed-top navbar-default" role="navigation">
@@ -68,92 +64,15 @@
     </nav>
   </div>
 
-  <div class="navbar-offset"></div>
-  <div id="map">
-  </div>
-  <div class="row main-row">
-    <div class="col-sm-4 col-md-3 sidebar sidebar-left pull-left">
-      <div class="panel-group sidebar-body" id="accordion-left">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" href="#layers">
-                <i class="fa fa-list-alt"></i>
-                Veículos de Propaganda
-              </a>
-              <span class="pull-right slide-submenu">
-                <i class="fa fa-chevron-left"></i>
-              </span>
-            </h4>
-          </div>
-          <div id="layers" class="panel-collapse collapse in">
-            <div class="panel-body list-group">
-             
-              <%= link_to(dashboard_outdoors_path, :class=> "list-group-item" ) do %>
-              <i class="fa fa-globe"></i> Outdoors
-              <% end %>
-              
-              
-              <a href="#" class="list-group-item">
-                <i class="fa fa-globe"></i> Busdoor
-              </a>
-              <a href="#" class="list-group-item">
-                <i class="fa fa-globe"></i> Indoor
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" href="#properties">
-                <i class="fa fa-list-alt"></i>
-                iMedia
-              </a>
-            </h4>
-          </div>
-          <div id="properties" class="panel-collapse collapse in">
-            <div class="panel-body">
-              <div class="container-fluid">
-                <div class="row">
 
-                  <%= yield %>
-                  
-                </div>
-                
-                
-              </div>
-            </div> 
-            
-          </div>
-        </div>
+ <div id="map"></div>
+      
+      <div class="row">
+
+        <%= yield %>
+
       </div>
-    </div>
-  </div>
-</div>
-<div class="mini-submenu mini-submenu-left pull-left">
-  <i class="fa fa-list-alt"></i>
-</div>
-</div>
-
-<!-- end template
-
-  <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p> 
 
 
-  -->  
-
-  <div class="well corpo">
-   <% flash.each do |name, msg| %>
-   <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
-    <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
-  </div>
-  <% end %>
-  
-  <div id="alert-jquery" class="alert alert-success" style="display: none;">
-   
-  </div>
-   </div>
 </body>
 </html>
