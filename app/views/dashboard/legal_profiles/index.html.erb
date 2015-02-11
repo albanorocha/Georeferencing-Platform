@@ -1,0 +1,39 @@
+<h1>Listing legal_profiles</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Tipo</th>
+      <th>Nome</th>
+      <th>Telefone</th>
+      <th>E-mail</th>
+      <th>Cnpj</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @legal_profiles.each do |legal_profile| %>
+      <tr>
+        <td><%= legal_profile.type %></td>
+        <td><%= legal_profile.person.name %></td>
+        <td><%= legal_profile.person.telephone %></td>
+        <td><%= legal_profile.person.user.email %></td>
+        <td><%= legal_profile.cnpj %></td>
+        <td><%= link_to "See all #{legal_profile.type.pluralize}", sti_legal_profile_path(legal_profile.type) %></td>
+        <td><%= link_to 'Show', sti_legal_profile_path(legal_profile.type, legal_profile) %></td>
+        <td><%= link_to 'Edit', sti_legal_profile_path(legal_profile.type, legal_profile, :edit) %></td>
+        <td><%= link_to 'Destroy', sti_legal_profile_path(legal_profile.type, legal_profile), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'See all Profiles', sti_legal_profile_path %>
+
+<br>
+
+
+<%= link_to "New #{@type}", sti_legal_profile_path(@type, nil, :new) %>

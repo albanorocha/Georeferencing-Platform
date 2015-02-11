@@ -68,92 +68,30 @@
     </nav>
   </div>
 
-  <div class="navbar-offset"></div>
-  <div id="map">
-  </div>
-  <div class="row main-row">
-    <div class="col-sm-4 col-md-3 sidebar sidebar-left pull-left">
-      <div class="panel-group sidebar-body" id="accordion-left">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" href="#layers">
-                <i class="fa fa-list-alt"></i>
-                Veículos de Propaganda
-              </a>
-              <span class="pull-right slide-submenu">
-                <i class="fa fa-chevron-left"></i>
-              </span>
-            </h4>
-          </div>
-          <div id="layers" class="panel-collapse collapse in">
-            <div class="panel-body list-group">
-             
-              <%= link_to(dashboard_outdoors_path, :class=> "list-group-item" ) do %>
-              <i class="fa fa-globe"></i> Outdoors
-              <% end %>
-              
-              
-              <a href="#" class="list-group-item">
-                <i class="fa fa-globe"></i> Busdoor
-              </a>
-              <a href="#" class="list-group-item">
-                <i class="fa fa-globe"></i> Indoor
-              </a>
+  <div id="map"></div>
+  
+  <div class="container-fluid" id="main">
+    <div class="row">
+      <div class="col-xs-4" id="left">
+        
+      <div >
+         <% flash.each do |name, msg| %>
+           <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+            <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
             </div>
-          </div>
+          <% end %>
+        
+        <div id="alert-jquery" class="alert alert-success" style="display: none;">
+         
         </div>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4 class="panel-title">
-              <a data-toggle="collapse" href="#properties">
-                <i class="fa fa-list-alt"></i>
-                iMedia
-              </a>
-            </h4>
-          </div>
-          <div id="properties" class="panel-collapse collapse in">
-            <div class="panel-body">
-              <div class="container-fluid">
-                <div class="row">
+       </div>
+        <%= yield %>
 
-                  <%= yield %>
-                  
-                </div>
-                
-                
-              </div>
-            </div> 
-            
-          </div>
-        </div>
       </div>
+      <div class="col-xs-8"><!--map-canvas will be postioned here--></div>
+      
     </div>
   </div>
-</div>
-<div class="mini-submenu mini-submenu-left pull-left">
-  <i class="fa fa-list-alt"></i>
-</div>
-</div>
 
-<!-- end template
-
-  <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p> 
-
-
-  -->  
-
-  <div class="well corpo">
-   <% flash.each do |name, msg| %>
-   <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
-    <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
-  </div>
-  <% end %>
-  
-  <div id="alert-jquery" class="alert alert-success" style="display: none;">
-   
-  </div>
-   </div>
 </body>
 </html>

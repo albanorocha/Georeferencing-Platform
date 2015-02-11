@@ -1,6 +1,7 @@
 class Dashboard::DashboardController < ActionController::Base
   layout 'dashboard'
-  
+ 	
+  before_action :authenticate_user!
   include Pundit
   
   

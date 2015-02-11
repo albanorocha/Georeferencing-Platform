@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cnpj:</strong>
+  <%= @legal_profile.cnpj %>
+</p>
+
+<%= link_to 'Edit', edit_dashboard_legal_profile_path(@legal_profile) %> |
+<%= link_to 'Back', dashboard_legal_profiles_path %>

@@ -1,0 +1,2 @@
+module PhysicalProfilesHelper
+end
