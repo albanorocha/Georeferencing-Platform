@@ -7,25 +7,32 @@ class Maps::OutdoorsController < Maps::MapsController
   respond_to :html
 
   def index
-    respond_with(@outdoors)
+    respond_with(:dashboard, @outdoors)
   end
 
   def show
     @hash = Gmaps4rails.build_markers(@outdoor) do |outdoor, marker|
+      marker.infowindow render_to_string(partial: "/maps/outdoors/infowindow", locals: { :outdoor => outdoor})
       marker.lat outdoor.latitude
       marker.lng outdoor.longitude
+      marker.title   outdoor.code
+      marker.picture({ 
+        url:    "/assets/marcador32.png",
+        width:  32,
+        height: 32
+      })
     end
-    respond_with(@outdoor)
+    respond_with(:dashboard, @outdoor)
   end
 
   def new
-    @outdoor = Dashboard::Outdoor.new
+    @outdoor = Outdoor.new
 
-    respond_with(@outdoor)
+    respond_with(:dashboard, @outdoor)
   end
 
   def edit
-    @outdoors = Dashboard::Outdoor.where.not(id: @outdoor)
+    @outdoors = Outdoor.where.not(id: @outdoor)
     @hash = Gmaps4rails.build_markers(@outdoors) do |outdoor, marker|
       marker.lat outdoor.latitude
       marker.lng outdoor.longitude
@@ -39,28 +46,29 @@ class Maps::OutdoorsController < Maps::MapsController
   end
 
   def create
-    @outdoor = Dashboard::Outdoor.new(outdoor_params)
+    @outdoor = Outdoor.new(outdoor_params)
+    @outdoor.media_company = current_user.person.profile
     @outdoor.save
-    respond_with(@outdoor)
+    respond_with(:dashboard, @outdoor)
   end
 
   def update
     @outdoor.update(outdoor_params)
-    respond_with(@outdoor)
+    respond_with(:dashboard, @outdoor)
   end
 
   def destroy
     @outdoor.destroy
-    respond_with(@outdoor)
+    respond_with(:dashboard, @outdoor)
   end
 
   private
     def set_outdoor
-      @outdoor = Dashboard::Outdoor.find(params[:id])
+      @outdoor = Outdoor.find(params[:id])
     end
 
     def set_markers
-      @outdoors = Dashboard::Outdoor.all
+      @outdoors = Outdoor.all
       @hash = Gmaps4rails.build_markers(@outdoors) do |outdoor, marker|
         marker.infowindow render_to_string(partial: "/maps/outdoors/infowindow", locals: { :outdoor => outdoor})
         marker.lat outdoor.latitude
@@ -75,6 +83,6 @@ class Maps::OutdoorsController < Maps::MapsController
     end
 
     def outdoor_params
-      params.require(:dashboard_outdoor).permit(:image, :company, :code, :description, :address, :latitude, :longitude, :price, :avaliable)
+      params.require(:outdoor).permit(:image, :code, :description, :address, :latitude, :longitude, :price, :avaliable)
     end
 end

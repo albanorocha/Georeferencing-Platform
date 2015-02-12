@@ -1,6 +1,7 @@
 class Maps::MapsController < ActionController::Base
   layout 'maps'
   
+  before_action :authenticate_user! 
   include Pundit
   
 

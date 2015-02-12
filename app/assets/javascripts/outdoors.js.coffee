@@ -21,6 +21,7 @@ panorama = undefined;
     heading: 265
     pitch: 0
   )
+  console.log(markers)
 
 
 @buildEmptyMap = () ->
@@ -80,8 +81,8 @@ placeNewMarker = (location) ->
     title: "Drag me!"
   )
   handler.getMap().panTo(location)
-  document.getElementById("dashboard_outdoor_latitude").value = location.lat()
-  document.getElementById("dashboard_outdoor_longitude").value = location.lng()
+  document.getElementById("outdoor_latitude").value = location.lat()
+  document.getElementById("outdoor_longitude").value = location.lng()
   google.maps.event.addListener marker, 'drag', (event) ->
     showNewPosition event.latLng
   google.maps.event.addListener marker, 'dragend', (event) ->
@@ -99,8 +100,8 @@ showNewPositionAddress = (location) ->
   Refresh the new marker position LatLng Code
 ###
 showNewPosition = (location) ->
-  document.getElementById("dashboard_outdoor_latitude").value = location.lat()
-  document.getElementById("dashboard_outdoor_longitude").value = location.lng()
+  document.getElementById("outdoor_latitude").value = location.lat()
+  document.getElementById("outdoor_longitude").value = location.lng()
 
 ###
   When build a new map, convert the new marker "LatLng Position" to a "Formatted Address" 
@@ -114,7 +115,7 @@ codeLatLng = (location) ->
   , (results, status) ->
     if status is google.maps.GeocoderStatus.OK
       if results[1]
-        document.getElementById("dashboard_outdoor_address").value = results[1].formatted_address
+        document.getElementById("outdoor_address").value = results[1].formatted_address
     else
       alert "ERRO Geocoder: " + status
 
@@ -122,7 +123,7 @@ codeLatLng = (location) ->
   When build a new map, convert the Address to a marker "LatLng Position"
 ###
 @codeAddress = () ->
-  address = document.getElementById("dashboard_outdoor_address").value
+  address = document.getElementById("outdoor_address").value
   geocoder.geocode
     address: address
   , (results, status) ->

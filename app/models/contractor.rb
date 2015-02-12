@@ -1,0 +1,1 @@
+class Contractor < LegalProfile; end
