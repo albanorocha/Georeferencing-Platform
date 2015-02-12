@@ -21,7 +21,6 @@ panorama = undefined;
     heading: 265
     pitch: 0
   )
-  console.log(markers)
 
 
 @buildEmptyMap = () ->
