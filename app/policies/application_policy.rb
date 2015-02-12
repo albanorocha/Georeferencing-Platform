@@ -11,6 +11,7 @@ class ApplicationPolicy
   end
 
   def show?
+    user.super_admin?
     scope.where(:id => record.id).exists?
   end
 

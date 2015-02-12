@@ -1,4 +1,4 @@
-<%= form_for(@outdoor, url: dashboard_outdoors_path) do |f| %>
+<%= form_for(@outdoor, url: external_url) do |f| %>
   <% if @outdoor.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@outdoor.errors.count, "error") %> prohibited this outdoor from being saved:</h2>

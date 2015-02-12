@@ -1,10 +1,10 @@
-<%= form_for( @legal_profile,  url: external_url ) do |f| %>
-  <% if @legal_profile.errors.any? %>
+<%= form_for(@physical_profile, url: external_url) do |f| %>
+  <% if @physical_profile.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@legal_profile.errors.count, "error") %> prohibited this legal_profile from being saved:</h2>
+      <h2><%= pluralize(@physical_profile.errors.count, "error") %> prohibited this physical_profile from being saved:</h2>
 
       <ul>
-      <% @legal_profile.errors.full_messages.each do |message| %>
+      <% @physical_profile.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -23,8 +23,8 @@
     </div>
 
     <div class="field">
-      <%= f.label :cnpj %><br />
-      <%= f.number_field :cnpj %>
+      <%= f.label :cpf %><br />
+      <%= f.number_field :cpf %>
     </div>
 
     <%= person_form.fields_for :user do |user_form| %>
@@ -44,26 +44,15 @@
       <div class="field">
         <%= user_form.label :password_confirmation %><br />
         <%= user_form.password_field :password_confirmation, autocomplete: "off" %>
-      </div>
-
-      <% if policy(@legal_profile).create? %>
-        <div class="field">
-          <%= user_form.label :super_admin %>
-          <%= user_form.check_box :super_admin  %>
-        </div>
-      <% end %>
-    
+      </div>    
     <% end %>
   
   <% end %>
 
-  <% if policy(@legal_profile).create? %>
-    <div class="field">
-      <%= f.label :type %><br>
-      <%= f.select :type, LegalProfile.types.map {|r| [r.humanize, r.camelcase]}, {}, disabled: @type != "LegalProfile" %>
-    </div>
-  <% end %>
-
+  <div class="field">
+    <%= f.label :type %><br>
+    <%= f.select :type, PhysicalProfile.types.map {|r| [r.humanize, r.camelcase]}, {} %>
+  </div>
 
   <div class="actions">
     <%= f.submit %>

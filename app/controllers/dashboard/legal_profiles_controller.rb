@@ -6,6 +6,7 @@ class Dashboard::LegalProfilesController <  Dashboard::DashboardController
 
   def index
     @legal_profiles = type_class.all
+    authorize  @legal_profiles
     respond_with(:dashboard, @legal_profiles)
   end
 
@@ -15,7 +16,7 @@ class Dashboard::LegalProfilesController <  Dashboard::DashboardController
 
   def new
     @legal_profile = type_class.new
-    puts @legal_profile.class
+    authorize  @legal_profile
     @legal_profile.build_person
     @legal_profile.person.build_user
     respond_with(:dashboard, @legal_profile)
@@ -26,6 +27,7 @@ class Dashboard::LegalProfilesController <  Dashboard::DashboardController
 
   def create
     @legal_profile = type_class.new(legal_profile_params)
+    authorize @legal_profile
     @legal_profile.save
     respond_with(:dashboard, @legal_profile)
   end
@@ -43,7 +45,7 @@ class Dashboard::LegalProfilesController <  Dashboard::DashboardController
   private
     def set_legal_profile
       @legal_profile = type_class.find(params[:id])
-      #@legal_profile = LegalProfile.find(params[:id])
+      authorize @legal_profile
     end
 
     def set_type 
@@ -59,9 +61,6 @@ class Dashboard::LegalProfilesController <  Dashboard::DashboardController
     end
 
     def legal_profile_params
-      params.require(type.underscore.to_sym).permit(:cnpj, :type,
-                                            :person_attributes => [:name, :telephone, 
-                                                                   :user_attributes => [:email, :password, :password_confirmation] 
-                                                                   ])
+      params.require(type.underscore.to_sym).permit(*policy(@legal_profile || type_class).permitted_attributes)
     end
 end

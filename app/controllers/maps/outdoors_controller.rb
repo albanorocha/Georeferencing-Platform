@@ -27,6 +27,7 @@ class Maps::OutdoorsController < Maps::MapsController
 
   def new
     @outdoor = Outdoor.new
+    authorize  @outdoor
 
     respond_with(:dashboard, @outdoor)
   end
@@ -47,6 +48,7 @@ class Maps::OutdoorsController < Maps::MapsController
 
   def create
     @outdoor = Outdoor.new(outdoor_params)
+    authorize  @outdoor
     @outdoor.media_company = current_user.person.profile
     @outdoor.save
     respond_with(:dashboard, @outdoor)
@@ -65,10 +67,12 @@ class Maps::OutdoorsController < Maps::MapsController
   private
     def set_outdoor
       @outdoor = Outdoor.find(params[:id])
+      authorize  @outdoor
     end
 
     def set_markers
       @outdoors = Outdoor.all
+      authorize  @outdoors
       @hash = Gmaps4rails.build_markers(@outdoors) do |outdoor, marker|
         marker.infowindow render_to_string(partial: "/maps/outdoors/infowindow", locals: { :outdoor => outdoor})
         marker.lat outdoor.latitude

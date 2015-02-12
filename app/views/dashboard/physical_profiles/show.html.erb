@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @physical_profile.person.name %>
+</p>
+
+<p>
+  <strong>e-mail:</strong>
+  <%= @physical_profile.person.user.email %>
+</p>
+
+<p>
+  <strong>Cpf:</strong>
+  <%= @physical_profile.cpf %>
+</p>
+
+<p>
+  <strong>Empregador:</strong>
+  <%= @physical_profile.employer.person.name %>
+</p>
+
+<%= link_to 'Edit', sti_physical_profile_path(@physical_profile.type, @physical_profile, :edit) %> |
+<%= link_to 'Back', dashboard_physical_profiles_path %>
