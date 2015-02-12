@@ -1,0 +1,55 @@
+<%= form_for( @contractor,  url: contractor_sign_up_path ) do |f| %>
+  <% if @contractor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contractor.errors.count, "error") %> prohibited this contractor from being saved:</h2>
+
+      <ul>
+      <% @contractor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.fields_for :person do |person_form| %>
+    <div class="field">
+      <%= person_form.label :name %><br />
+      <%= person_form.text_field :name, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= person_form.label :telephone %><br />
+      <%= person_form.text_field :telephone %>
+    </div>
+
+    <div class="field">
+      <%= f.label :cnpj %><br />
+      <%= f.number_field :cnpj %>
+    </div>
+
+    <%= person_form.fields_for :user do |user_form| %>
+      <div class="field">
+        <%= user_form.label :email %><br />
+        <%= user_form.email_field :email %>
+      </div>
+
+      <div class="field">
+        <%= user_form.label :password %>
+        <% if @validatable %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= user_form.password_field :password, autocomplete: "off" %>
+      </div>
+
+      <div class="field">
+        <%= user_form.label :password_confirmation %><br />
+        <%= user_form.password_field :password_confirmation, autocomplete: "off" %>
+      </div> 
+    <% end %>
+  
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

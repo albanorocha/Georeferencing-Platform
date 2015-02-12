@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   root 'home#index'
+  
+  get '/contractor/sign_up', to: 'home#contractor_sign_up'
+  post '/contractor/sign_up', to: 'home#contractor_create'
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
