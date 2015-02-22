@@ -1,0 +1,6 @@
+<h1>Editing legal_profile</h1>
+
+<%= render partial: "form", locals: {external_url: sti_legal_profile_path(@type, @legal_profile)} %>
+
+<%= link_to 'Show', sti_legal_profile_path(@legal_profile.type, @legal_profile) %> |
+<%= link_to 'Back', sti_legal_profile_path(@type) %>

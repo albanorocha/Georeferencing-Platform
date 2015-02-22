@@ -1,0 +1,12 @@
+<h1>Editar <%= @outdoor.code %></h1>
+<hr>
+
+<%= render partial: 'form', locals: {external_url: dashboard_outdoor_path} %>
+
+<%= link_to 'Voltar', dashboard_outdoors_path , :class => "btn btn-default" %> | 
+<%= link_to 'Ver', dashboard_outdoor_path(@outdoor), :class => "btn btn-primary" %>
+
+
+<%= javascript_tag do %>
+  buildEditMap(<%= raw  @hash.to_json %>, <%= @outdoor.latitude %>, <%= @outdoor.longitude %>);
+<% end %>

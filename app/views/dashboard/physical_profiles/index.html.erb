@@ -1,0 +1,42 @@
+<h1>Listing physical_profiles</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Telefone</th>
+      <th>Cpf</th>
+      <th>Função</th>
+      <th>Empregador</th>
+
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @physical_profiles.each do |physical_profile| %>
+      <tr>
+        <td><%= physical_profile.person.name %></td>
+        <td><%= physical_profile.person.user.email %></td>
+        <td><%= physical_profile.person.telephone %></td>
+        <td><%= physical_profile.cpf %></td>
+        <td><%= physical_profile.type %></td>
+        <td><%= physical_profile.employer.person.name %></td>
+        <td><%= link_to "See all #{physical_profile.type.pluralize}", sti_physical_profile_path(physical_profile.type) %></td>
+        <td><%= link_to 'Show', sti_physical_profile_path(physical_profile.type, physical_profile) %></td>
+        <td><%= link_to 'Edit', sti_physical_profile_path(physical_profile.type, physical_profile, :edit) %></td>
+        <td><%= link_to 'Destroy', sti_physical_profile_path(physical_profile.type, physical_profile), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'See all Physical Profiles', sti_physical_profile_path %>
+
+<br>
+
+
+<%= link_to "New #{@type}", sti_physical_profile_path(@type, nil, :new) %>

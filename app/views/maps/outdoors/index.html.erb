@@ -1,0 +1,43 @@
+<h1>iMedia Outdoors </h1>
+<hr>
+<div class="container">
+  <div class="row">
+<%= link_to 'Novo', new_dashboard_outdoor_path, 'data-no-turbolink' => true, :class => "btn btn-primary" %>
+</div>
+</div>
+<br>
+
+  <div class="table-responsive">
+  <table class="table table-bordered table-striped text-center table-hover">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Empresa</th>
+        <th>Endereço</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @outdoors.each do |outdoor| %>
+        <tr>
+          <td><%= outdoor.code %></td>
+          <td><%= outdoor.media_company.person.name %></td>
+          <td><%= outdoor.address %></td>
+          <td><%= link_to 'Ver', dashboard_outdoor_path(outdoor) %><i class="icon-search"></i><br>
+          <%= link_to 'Editar', edit_dashboard_outdoor_path(outdoor) %><i class="icon-pencil"></i>
+          <br>
+          <%= link_to 'Excluir', dashboard_outdoor_path(outdoor), method: :delete, data: { confirm: 'Deseja realmente excluir?' } %><i class="icon-trash"></i></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
+
+<%= javascript_tag do %>
+  <% if @hash.empty? %>
+    buildEmptyMap();
+  <% else %>
+    buildMap(<%= raw  @hash.to_json %>);
+  <% end %>
+<% end %>

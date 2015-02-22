@@ -1,0 +1,7 @@
+<h1>Editing <%= @type.capitalize %></h1>
+
+<%= render partial: "form", locals: {external_url: sti_physical_profile_path(@type, @physical_profile)} %>
+
+<%= link_to 'Show', sti_physical_profile_path(@physical_profile.type, @physical_profile) %> |
+<%= link_to 'Back', sti_physical_profile_path(@type) %>
+

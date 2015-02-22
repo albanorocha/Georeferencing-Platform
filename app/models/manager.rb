@@ -1,0 +1,3 @@
+class Manager < PhysicalProfile 
+	
+end

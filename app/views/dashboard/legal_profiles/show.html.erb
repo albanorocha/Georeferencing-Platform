@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @legal_profile.person.name %>
+</p>
+<p>
+  <strong>Telefone:</strong>
+  <%= @legal_profile.person.telephone %>
+</p>
+<p>
+  <strong>E-mail:</strong>
+  <%= @legal_profile.person.user.email %>
+</p>
+<p>
+  <strong>Cnpj:</strong>
+  <%= @legal_profile.cnpj %>
+</p>
+
+<%= link_to 'Edit', sti_legal_profile_path(@legal_profile.type, @legal_profile, :edit) %> |
+<%= link_to 'Back', dashboard_legal_profiles_path %>

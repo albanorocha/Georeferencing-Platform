@@ -1,0 +1,3 @@
+class Secretary < PhysicalProfile 
+	
+end

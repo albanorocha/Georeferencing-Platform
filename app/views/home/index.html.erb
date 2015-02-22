@@ -1,0 +1,21 @@
+<h6>UM NOVO CONCEITO EM COMPRA DE MÍDIA EXTERIOR!</h6>
+
+<%= form_for @contact, :url => mensage_sent_path do |f| %>
+<div class="row">
+	<div class="col-md-6">
+		<div class="form-group">
+			<%= f.text_field(:name, class: 'form-control', placeholder: 'Nome *')%>
+		</div>
+	</div>
+	<div class="col-md-6">
+
+		<div class="form-group">
+			<%= f.email_field(:email, class: 'form-control', placeholder: 'E-mail *')%>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+	<div class="col-lg-12 text-center">
+		<button type="submit" class="btn btn-primary">Quero Receber Novidades</button>
+	</div>
+</div>
+<% end %>
