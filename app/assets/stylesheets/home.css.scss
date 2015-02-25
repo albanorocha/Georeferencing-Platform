@@ -1,13 +1,6 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-.span-top{
-  padding-top:15px;
-
-}
-
-
 html,body{
     height:100%;
 }
@@ -16,8 +9,8 @@ body{
     padding-top:50px; /*padding for navbar*/
 }
 
-.navbar-custom .icon-bar {
-  background-color:#fff;
+.span-top{
+  padding-top:15px;
 }
 
 .navbar-custom {

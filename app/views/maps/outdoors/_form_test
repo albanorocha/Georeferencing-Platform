@@ -1,0 +1,73 @@
+<%= form_for(@outdoor, url: external_url) do |f| %>
+
+<div class="container">
+  <div class="row col-md-4">
+    <div class="form-group">
+
+  <% if @outdoor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@outdoor.errors.count, "error") %> prohibited this outdoor from being saved:</h2>
+      <ul>
+      <% @outdoor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="row">
+  <div class="form-group">
+    <%= f.text_field :code, placeholder: 'Código', class: 'form-control' %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="form-group">
+    <%= f.text_area :description, placeholder: 'Descrição', class: 'form-control' %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="form-group">
+    <%= f.number_field :price, placeholder: 'Preço', class: 'form-control', :step => 'any' %>
+  </div>
+</div>
+
+<div class="row ">
+  <div class="form-group">
+    <%= f.text_field :address, placeholder: 'Endereço', class: 'form-control' %>
+  </div>
+</div>
+<div class="row ">
+  <div class="form-group">
+  <%= link_to('javascript:codeAddress();', :class => "btn btn-primary btn-sm", :id => :show_on_map, :title => "Clique para exibir no mapa!") do %>
+     Ver no Mapa
+  <% end %>
+</div>
+</div>
+
+<div class="row">
+  <div class="form-group">
+    <p class="help-block">Inserir imagem do outdoor.</p>
+    <%= f.file_field :image,  class: 'form-control'%>
+
+  </div>
+</div>
+
+<div class="row">
+   <div class="form-group checkbox">
+    <%= f.check_box :avaliable %>
+    Habilitado
+  </div>
+</div>
+
+<%= f.hidden_field :latitude, class: 'form-control', :step => 'any' %>
+<%= f.hidden_field :longitude, class: 'form-control', :step => 'any' %>
+
+<div class="actions">
+<%= f.submit "Enviar", :class => "btn btn-primary btn-lg btn-block"%>
+</div>
+<% end %>
+
+  </div>
+</div>
+  </div>

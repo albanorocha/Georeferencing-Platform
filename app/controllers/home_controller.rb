@@ -1,8 +1,8 @@
 class HomeController < ApplicationController
-	
   respond_to :html
 
   def index
+    @contact = Contact.new
   end
 
   def contractor_sign_up
@@ -20,6 +20,19 @@ class HomeController < ApplicationController
       format.html {redirect_to dashboard_root_path, notice: "Cadastrado com sucesso!"}
     end 
   end
+
+  def mensage_sent
+    @contact = Contact.new(params[:contact])
+    @contact.request = request
+    if @contact.deliver
+      flash.now[:notice] = 'Obrigado. Mensagem enviada com Sucesso!!!'
+    	render "index"
+    else
+      	flash.now[:error] = 'Mensagem não pode ser enviada.'
+      	render "index"
+    end
+  end
+
 
   private
 

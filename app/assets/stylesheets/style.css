@@ -10,6 +10,7 @@ body {
     line-height: 1.6em;
     -webkit-font-smoothing: antialiased;
     -webkit-overflow-scrolling: touch;
+    padding-bottom: 50px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -52,8 +53,7 @@ a:focus {
     color: #333;
     text-decoration: none;
     outline: 0;
-    font-weight: 400;
-
+    font-weight: 300;
 }
 
 a:before,
@@ -118,7 +118,7 @@ a.navbar-brand:hover {
 	background-color: #444;
 	background-image: url("main-bg.jpg");
   background-image: no-repeat center top;
-	margin-top: -20px;
+	margin-top: -70px;
 	padding-top: 100px;
 	background-attachment: relative;
 	background-position: center center;
@@ -141,13 +141,13 @@ a.navbar-brand:hover {
   color: #333;
   font-size: 80px;
   font-weight: 400;
-  font-size: 50px;
+  font-size: 55px;
   font-family: fantasy;
   
 }
 
 #header h1 {
-	margin-top: 60px;
+	margin-top: 0px;
 	margin-bottom: 15px;
 	color: #000;
 	font-size: 70px;
@@ -194,7 +194,17 @@ h2.subtitle {
 /* footer */
 #footer {
 	background: #428BCA;
-	padding: 20px 0 5px;
+	padding: 10px 0 0 0px;
+}
+
+
+#footer-fixed {
+    position: fixed;
+    height: 45px;
+    bottom: 0;
+    width: 100%;
+    background: #428BCA;
+    padding: 11px 0 0 0px;
 }
 
 p.copyright {

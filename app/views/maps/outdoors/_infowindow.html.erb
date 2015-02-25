@@ -4,15 +4,14 @@
     <%= image_tag outdoor.image_url(:thumb).to_s, :class => "img-thumbnail" %>
   	</div>
   	<div class="col-md-6">
-  		<h1 class="text-center"> <%= outdoor.code %> <small><%= outdoor.media_company.person.name %></small></h1>
-  		<p> <strong> <%= outdoor.address %></strong></p>
+  		<h1 class="text-center">OUT - <%= outdoor.code %></h1>
+      <small><%= outdoor.media_company.person.name %></small>
   		<p> <strong>R$ <%= outdoor.price %> </strong></p>
-  	</div>
-  </div>
-  <div class="row">
-  	<p><%= outdoor.description %></p>
-  </div>
-   <%= link_to("javascript:toggleStreetView(#{outdoor.latitude}, #{outdoor.longitude});", :class => "btn btn-primary btn-sm", :title => "Clique para exibir no Street View!") do %>
-
+  	   <%= link_to("javascript:toggleStreetView(#{outdoor.latitude}, #{outdoor.longitude});", :class => "btn btn-primary btn-sm", :title => "Clique para exibir no Street View!") do %>
+   Street View
   <% end %>
+    </div>
+  </div>
+
+   
 </div>

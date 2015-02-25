@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"per",
+				"person_sudo"
+			],
+			[
+				"user",
+				"user_sudo"
+			],
+			[
+				"na",
+				"name"
+			],
+			[
 				"phy",
 				"physical_profile"
 			],
@@ -136,66 +148,42 @@
 	"buffers":
 	[
 		{
-			"file": "app/helpers/legal_profiles_helper.rb",
+			"file": "config/database.yml",
 			"settings":
 			{
-				"buffer_size": 438,
+				"buffer_size": 439,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/views/dashboard/legal_profiles/show.html.erb",
+			"file": "app/models/legal_profile.rb",
 			"settings":
 			{
-				"buffer_size": 470,
+				"buffer_size": 417,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/views/dashboard/physical_profiles/show.html.erb",
+			"file": "app/views/layouts/application.html.erb",
 			"settings":
 			{
-				"buffer_size": 501,
+				"buffer_size": 3527,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "config/routes.rb",
+			"file": "app/views/dashboard/legal_profiles/_form.html.erb",
 			"settings":
 			{
-				"buffer_size": 754,
+				"buffer_size": 2021,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/views/dashboard/physical_profiles/index.html.erb",
+			"file": "app/models/person.rb",
 			"settings":
 			{
-				"buffer_size": 1392,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/controllers/dashboard/physical_profiles_controller.rb",
-			"settings":
-			{
-				"buffer_size": 1804,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/policies/physical_profile_policy.rb",
-			"settings":
-			{
-				"buffer_size": 262,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "app/models/user.rb",
-			"settings":
-			{
-				"buffer_size": 619,
+				"buffer_size": 152,
 				"line_ending": "Unix"
 			}
 		}
@@ -273,37 +261,97 @@
 	[
 		"/home/eduardo/Workspace/iMedia",
 		"/home/eduardo/Workspace/iMedia/app",
-		"/home/eduardo/Workspace/iMedia/app/models/dashboard",
-		"/home/eduardo/Workspace/iMedia/app/policies",
-		"/home/eduardo/Workspace/iMedia/app/views/dashboard/legal_profiles",
-		"/home/eduardo/Workspace/iMedia/app/views/dashboard/physical_profiles",
-		"/home/eduardo/Workspace/iMedia/db",
-		"/home/eduardo/Workspace/iMedia/db/migrate"
+		"/home/eduardo/Workspace/iMedia/app/views",
+		"/home/eduardo/Workspace/iMedia/app/views/devise",
+		"/home/eduardo/Workspace/iMedia/app/views/devise/sessions",
+		"/home/eduardo/Workspace/iMedia/app/views/devise/shared",
+		"/home/eduardo/Workspace/iMedia/app/views/home"
 	],
 	"file_history":
 	[
-		"/home/eduardo/Workspace/iMedia/app/models/physical_profile.rb",
-		"/home/eduardo/Workspace/iMedia/config/environments/production.rb",
+		"/home/eduardo/Workspace/iMedia/app/assets/stylesheets/application.css",
+		"/home/eduardo/Workspace/iMedia/app/controllers/application_controller.rb",
+		"/home/eduardo/Workspace/iMedia/db/migrate/20150209213921_add_person_references_to_user.rb",
+		"/home/eduardo/Workspace/iMedia/db/migrate/20150107195146_add_latitude_longitude_to_outdoors.rb",
+		"/home/eduardo/Workspace/iMedia/db/migrate/20150129034628_add_image_to_outdoors.rb",
+		"/home/eduardo/Workspace/iMedia/db/migrate/20150129022440_add_fields_to_outdoors.rb",
+		"/home/eduardo/Workspace/iMedia/db/migrate/20150210175310_add_type_to_legal_profile.rb",
+		"/home/eduardo/Workspace/iMedia/db/migrate/20150210193118_add_super_admin_to_user.rb",
+		"/home/eduardo/Workspace/iMedia/db/migrate/20150211203732_add_type_to_physical_profile.rb",
+		"/home/eduardo/Workspace/iMedia/db/migrate/20150211014446_add_media_company_ref_to_outdoors.rb",
+		"/home/eduardo/Workspace/iMedia/db/migrate/20150212030800_add_legal_profile_ref_to_physical_profile.rb",
+		"/home/eduardo/Workspace/iMedia/app/controllers/dashboard/dashboard_controller.rb",
+		"/home/eduardo/Workspace/iMedia/tmp/cache/assets/development/sprockets/d2ceb8e9b634464ae308d81c0d80bde7",
+		"/home/eduardo/Workspace/iMedia/tmp/cache/assets/development/sprockets/d446686ff9ca85576c87db1ef28d0c09",
+		"/home/eduardo/Workspace/iMedia/tmp/cache/assets/development/sprockets/d69e43f98479b8c4a296396db540eca2",
+		"/home/eduardo/Workspace/iMedia/tmp/cache/assets/development/sprockets/d752fe6531ece6a41a9629d78c1a7595",
+		"/home/eduardo/Workspace/iMedia/tmp/cache/assets/development/sprockets/d771ace226fc8215a3572e0aa35bb0d6",
+		"/home/eduardo/Workspace/iMedia/tmp/cache/assets/development/sprockets/d889f12bde13c57820bd5f3946f91f7e",
+		"/home/eduardo/Workspace/iMedia/tmp/cache/assets/development/sprockets/d92a60197e1fd2d37fdc60c376ce7c94",
+		"/home/eduardo/Workspace/iMedia/tmp/cache/assets/development/sprockets/d9b553d21a9209af6093c2c196037be3",
+		"/home/eduardo/Workspace/iMedia/tmp/cache/assets/development/sprockets/dacf836609dfe0e193db5da9e25b131d",
+		"/home/eduardo/Workspace/iMedia/tmp/cache/assets/development/sprockets/dbc0c86fe68c9cba860ea8b4e483729d",
+		"/home/eduardo/Workspace/iMedia/tmp/cache/assets/development/sprockets/dc948653f5d3253ef14a60d44cc7a54b",
 		"/home/eduardo/Workspace/iMedia/app/controllers/dashboard/legal_profiles_controller.rb",
+		"/home/eduardo/Workspace/iMedia/app/views/maps/outdoors/_infowindow.html.erb",
+		"/home/eduardo/Workspace/iMedia/config/environments/production.rb",
+		"/home/eduardo/Workspace/iMedia/db/development.sqlite3",
+		"/home/eduardo/Workspace/iMedia/log/development.log",
+		"/home/eduardo/Workspace/iMedia/config/environments/development.rb",
+		"/home/eduardo/Workspace/iMedia/config/initializers/filter_parameter_logging.rb",
+		"/home/eduardo/Workspace/iMedia/app/controllers/home_controller.rb",
+		"/home/eduardo/Workspace/iMedia/app/controllers/dashboard/physical_profiles_controller.rb",
+		"/home/eduardo/Workspace/iMedia/app/views/layouts/application.html.erb",
+		"/home/eduardo/Workspace/iMedia/app/helpers/application_helper.rb",
+		"/home/eduardo/Workspace/iMedia/config/application.rb",
+		"/home/eduardo/Workspace/iMedia/app/policies/legal_profile_policy.rb",
+		"/home/eduardo/Workspace/iMedia/config/routes.rb",
+		"/home/eduardo/Workspace/iMedia/app/views/home/contractor_sign_up.html.erb",
+		"/home/eduardo/Workspace/iMedia/app/views/devise/shared/_links.html.erb",
+		"/home/eduardo/Workspace/iMedia/app/views/home/_contractor_form.html.erb",
+		"/home/eduardo/Workspace/iMedia/test/controllers/physical_profiles_controller_test.rb",
+		"/home/eduardo/Workspace/iMedia/app/models/physical_profile.rb",
 		"/home/eduardo/Workspace/iMedia/app/models/legal_profile.rb",
+		"/home/eduardo/Workspace/iMedia/app/controllers/maps/outdoors_controller.rb",
+		"/home/eduardo/Workspace/iMedia/app/models/outdoor.rb",
+		"/home/eduardo/Workspace/iMedia/app/assets/javascripts/outdoors.js.coffee",
+		"/home/eduardo/Workspace/iMedia/test/controllers/dashboard/home_controller_test.rb",
+		"/home/eduardo/Workspace/iMedia/test/controllers/outdoors_controller_test.rb",
+		"/home/eduardo/Workspace/iMedia/test/controllers/home_controller_test.rb",
+		"/home/eduardo/Workspace/iMedia/app/controllers/maps/maps_controller.rb",
+		"/home/eduardo/Workspace/iMedia/app/controllers/dashboard/home_controller.rb",
+		"/home/eduardo/Workspace/iMedia/app/views/dashboard/legal_profiles/_form.html.erb",
+		"/home/eduardo/Workspace/iMedia/app/views/dashboard/physical_profiles/_form.html.erb",
+		"/home/eduardo/Workspace/iMedia/app/views/layouts/maps.html.erb",
+		"/home/eduardo/Workspace/iMedia/app/assets/javascripts/home.js",
+		"/home/eduardo/Workspace/iMedia/app/views/home/sign_up.html.erb",
+		"/home/eduardo/Workspace/iMedia/app/models/user.rb",
+		"/home/eduardo/Workspace/iMedia/app/assets/stylesheets/bootstrap-theme.css",
+		"/home/eduardo/Workspace/iMedia/db/seeds.rb",
+		"/home/eduardo/Workspace/iMedia/config/secrets.yml",
+		"/home/eduardo/Workspace/iMedia/app/views/dashboard/legal_profiles/show.html.erb",
+		"/home/eduardo/Workspace/iMedia/app/assets/stylesheets/bootstrap.css",
+		"/home/eduardo/Workspace/iMedia/app/views/layouts/dashboard.html.erb",
+		"/home/eduardo/Workspace/iMedia/app/assets/javascripts/dashboard/home.js.coffee",
+		"/home/eduardo/Workspace/iMedia/app/assets/stylesheets/dashboard/home.css.scss",
+		"/home/eduardo/Workspace/iMedia/test/helpers/home_helper_test.rb",
+		"/home/eduardo/Workspace/iMedia/app/helpers/dashboard/home_helper.rb",
+		"/home/eduardo/Workspace/iMedia/app/assets/stylesheets/home.css.scss",
+		"/home/eduardo/Workspace/iMedia/app/helpers/home_helper.rb",
+		"/home/eduardo/Workspace/iMedia/app/helpers/legal_profiles_helper.rb",
+		"/home/eduardo/Workspace/iMedia/app/views/dashboard/physical_profiles/show.html.erb",
+		"/home/eduardo/Workspace/iMedia/app/views/dashboard/physical_profiles/index.html.erb",
+		"/home/eduardo/Workspace/iMedia/app/policies/physical_profile_policy.rb",
 		"/home/eduardo/Workspace/iMedia/app/views/dashboard/legal_profiles/index.json.jbuilder",
 		"/home/eduardo/Workspace/iMedia/app/views/dashboard/legal_profiles/index.html.erb",
 		"/home/eduardo/Workspace/iMedia/app/views/dashboard/home/index.html.erb",
 		"/home/eduardo/Workspace/iMedia/app/uploaders/image_uploader.rb",
 		"/home/eduardo/Workspace/iMedia/test/fixtures/legal_profiles.yml",
-		"/home/eduardo/Workspace/iMedia/config/routes.rb",
 		"/home/eduardo/Workspace/iMedia/app/views/dashboard/legal_profiles/new.html.erb",
 		"/home/eduardo/Workspace/iMedia/app/views/dashboard/physical_profiles/new.html.erb",
-		"/home/eduardo/Workspace/iMedia/app/views/dashboard/physical_profiles/index.html.erb",
 		"/home/eduardo/Workspace/iMedia/app/views/dashboard/legal_profiles/edit.html.erb",
 		"/home/eduardo/Workspace/iMedia/app/views/dashboard/physical_profiles/edit.html.erb",
-		"/home/eduardo/Workspace/iMedia/app/views/dashboard/physical_profiles/_form.html.erb",
-		"/home/eduardo/Workspace/iMedia/app/views/dashboard/legal_profiles/_form.html.erb",
-		"/home/eduardo/Workspace/iMedia/app/controllers/dashboard/physical_profiles_controller.rb",
 		"/home/eduardo/Workspace/iMedia/app/helpers/physical_profiles_helper.rb",
-		"/home/eduardo/Workspace/iMedia/app/policies/physical_profile_policy.rb",
-		"/home/eduardo/Workspace/iMedia/app/views/dashboard/physical_profiles/show.html.erb",
-		"/home/eduardo/Workspace/iMedia/app/helpers/legal_profiles_helper.rb",
 		"/home/eduardo/Workspace/iMedia/app/policies/manager_policy.rb",
 		"/home/eduardo/Workspace/iMedia/app/views/devise/confirmations/new.html.erb",
 		"/home/eduardo/Workspace/iMedia/app/views/devise/passwords/new.html.erb",
@@ -317,40 +365,23 @@
 		"/home/eduardo/Workspace/iMedia/app/views/maps/outdoors/edit.html.erb",
 		"/home/eduardo/Workspace/iMedia/app/views/dashboard/physical_profiles/show.json.jbuilder",
 		"/home/eduardo/Workspace/iMedia/app/views/maps/outdoors/show.html.erb",
-		"/home/eduardo/Workspace/iMedia/app/views/dashboard/legal_profiles/show.html.erb",
 		"/home/eduardo/Workspace/iMedia/app/assets/stylesheets/physical_profiles.css.scss",
 		"/home/eduardo/Workspace/iMedia/app/policies/secretary_policy.rb",
-		"/home/eduardo/Workspace/iMedia/app/policies/legal_profile_policy.rb",
-		"/home/eduardo/Workspace/iMedia/db/migrate/20150212030800_add_legal_profile_ref_to_physical_profile.rb",
 		"/home/eduardo/Workspace/iMedia/db/migrate/20150212030556_add_legal_profile_ref_to_physical_profile.rb",
 		"/home/eduardo/Workspace/iMedia/db/migrate/20150211204606_add_legal_profile_ref_to_physical_profile.rb",
 		"/home/eduardo/Workspace/iMedia/db/migrate/20150129022000_remove_name_from_outdoors.rb",
-		"/home/eduardo/Workspace/iMedia/db/migrate/20150129034628_add_image_to_outdoors.rb",
 		"/home/eduardo/Workspace/iMedia/config/initializers/mime_types.rb",
-		"/home/eduardo/Workspace/iMedia/app/views/layouts/maps.html.erb",
 		"/home/eduardo/Workspace/iMedia/app/models/secretary.rb",
 		"/home/eduardo/Workspace/iMedia/app/models/manager.rb",
-		"/home/eduardo/Workspace/iMedia/app/controllers/maps/outdoors_controller.rb",
-		"/home/eduardo/Workspace/iMedia/app/views/maps/outdoors/_infowindow.html.erb",
 		"/home/eduardo/Workspace/iMedia/config/initializers/wrap_parameters.rb",
-		"/home/eduardo/Workspace/iMedia/db/migrate/20150107195146_add_latitude_longitude_to_outdoors.rb",
-		"/home/eduardo/Workspace/iMedia/db/migrate/20150209213921_add_person_references_to_user.rb",
-		"/home/eduardo/Workspace/iMedia/db/migrate/20150211203732_add_type_to_physical_profile.rb",
-		"/home/eduardo/Workspace/iMedia/db/migrate/20150210175310_add_type_to_legal_profile.rb",
 		"/home/eduardo/Workspace/iMedia/app/controllers/physical_profiles_controller.rb",
-		"/home/eduardo/Workspace/iMedia/app/models/user.rb",
 		"/home/eduardo/Workspace/iMedia/app/views/maps/outdoors/_form.html.erb",
 		"/home/eduardo/Workspace/iMedia/app/views/maps/outdoors/index.html.erb",
 		"/home/eduardo/Workspace/iMedia/app/policies/outdoor_policy.rb",
-		"/home/eduardo/Workspace/iMedia/app/views/devise/shared/_links.html.erb",
 		"/home/eduardo/Workspace/iMedia/config/locales/devise.en.yml",
 		"/home/eduardo/Workspace/iMedia/app/models/person.rb",
 		"/home/eduardo/Workspace/iMedia/app/helpers/outdoors_helper.rb",
 		"/home/eduardo/Workspace/iMedia/test/models/outdoor_test.rb",
-		"/home/eduardo/Workspace/iMedia/db/migrate/20150211014446_add_media_company_ref_to_outdoors.rb",
-		"/home/eduardo/Workspace/iMedia/app/models/outdoor.rb",
-		"/home/eduardo/Workspace/iMedia/app/controllers/dashboard/dashboard_controller.rb",
-		"/home/eduardo/Workspace/iMedia/app/controllers/maps/maps_controller.rb",
 		"/home/eduardo/Workspace/iMedia/app/policies/application_policy.rb",
 		"/home/eduardo/Workspace/iMedia/app/policies/media_company_policy.rb",
 		"/home/eduardo/Workspace/iMedia/app/policies/contractor_policy.rb",
@@ -359,57 +390,13 @@
 		"/home/eduardo/Workspace/iMedia/app/views/physical_profiles/show.json.jbuilder",
 		"/home/eduardo/Workspace/iMedia/app/views/physical_profiles/show.html.erb",
 		"/home/eduardo/Workspace/iMedia/config/database.yml",
-		"/home/eduardo/Workspace/iMedia/config/environments/development.rb",
 		"/home/eduardo/Workspace/iMedia/app/models/media_company.rb",
-		"/home/eduardo/Workspace/iMedia/db/migrate/20150129022440_add_fields_to_outdoors.rb",
 		"/home/eduardo/Workspace/iMedia/app/views/physical_profiles/edit.html.erb",
-		"/home/eduardo/Workspace/iMedia/app/assets/javascripts/outdoors.js.coffee",
 		"/home/eduardo/Workspace/iMedia/app/models/dashboard/outdoor.rb",
-		"/home/eduardo/Workspace/iMedia/app/views/layouts/dashboard.html.erb",
 		"/home/eduardo/Workspace/iMedia/Gemfile",
 		"/home/eduardo/Workspace/iMedia/config/environment.rb",
 		"/home/eduardo/Workspace/iMedia/app/views/physical_profiles/index.json.jbuilder",
-		"/home/eduardo/Workspace/iMedia/config/initializers/filter_parameter_logging.rb",
-		"/home/eduardo/Workspace/iMedia/test/controllers/legal_profiles_controller_test.rb",
-		"/home/eduardo/Workspace/iMedia/app/models/contractor.rb",
-		"/home/eduardo/Workspace/iMedia/db/migrate/20150210193118_add_super_admin_to_user.rb",
-		"/home/eduardo/Workspace/iMedia/app/controllers/dashboard/contractor.rb",
-		"/home/eduardo/Workspace/iMedia/app/controllers/dashboard/media_company.rb",
-		"/home/eduardo/Workspace/iMedia/app/models/dashboard/legal_profile.rb",
-		"/home/eduardo/Workspace/iMedia/app/models/dashboard/person.rb",
-		"/home/eduardo/Workspace/iMedia/app/views/physical_profiles/index.html.erb",
-		"/home/eduardo/Workspace/iMedia/bin/spring",
-		"/home/eduardo/Workspace/iMedia/app/views/physical_profiles/new.html.erb",
-		"/home/eduardo/Workspace/iMedia/app/views/legal_profiles/_form.html.erb",
-		"/home/eduardo/Workspace/iMedia/app/views/home/index.html.erb",
-		"/home/eduardo/Workspace/iMedia/app/views/maps/outdoors/index.json.jbuilder",
-		"/home/eduardo/Workspace/iMedia/app/controllers/legal_profiles_controller.rb",
-		"/home/eduardo/Workspace/iMedia/test/helpers/physical_profiles_helper_test.rb",
-		"/home/eduardo/Workspace/iMedia/db/migrate/20150209212857_create_people.rb",
-		"/home/eduardo/Workspace/iMedia/app/controllers/application_controller.rb",
-		"/home/eduardo/Workspace/iMedia/app/controllers/dashboard/home_controller.rb",
-		"/home/eduardo/Workspace/iMedia/app/controllers/home_controller.rb",
-		"/home/eduardo/Workspace/iMedia/config.ru",
-		"/home/eduardo/Workspace/iMedia/db/migrate/20141203203333_create_outdoors.rb",
-		"/home/eduardo/Workspace/iMedia/Gemfile.lock",
-		"/home/eduardo/Workspace/iMedia/app/assets/javascripts/underscore.js",
-		"/home/eduardo/Workspace/iMedia/app/assets/javascripts/home.js",
-		"/home/eduardo/Workspace/iMedia/app/assets/javascripts/application.js",
-		"/home/eduardo/Workspace/iMedia/test/fixtures/outdoors.yml",
-		"/home/eduardo/Workspace/iMedia/app/assets/stylesheets/outdoors.css.scss",
-		"/home/eduardo/Workspace/iMedia/test/helpers/outdoors_helper_test.rb",
-		"/home/eduardo/Workspace/iMedia/test/controllers/outdoors_controller_test.rb",
-		"/home/eduardo/Workspace/iMedia/app/assets/stylesheets/ol.css",
-		"/home/eduardo/Workspace/iMedia/app/assets/javascripts/ol.js",
-		"/home/eduardo/Workspace/iMedia/app/assets/javascripts/ol-deps.js",
-		"/home/eduardo/Workspace/iMedia/app/assets/javascripts/ol-debug.js",
-		"/home/eduardo/Workspace/iMedia/app/assets/stylesheets/dashboard/home.css.scss",
-		"/home/eduardo/Workspace/iMedia/tmp/cache/assets/development/sprockets/adc487a2722c3fd43d35fdec819f6a38",
-		"/home/eduardo/Workspace/CMT/CMT.py",
-		"/home/eduardo/Workspace/CMT/util.py",
-		"/home/eduardo/Workspace/CMT/run.py",
-		"/home/eduardo/Workspace/iMedia/app/assets/javascripts/markerclusterer.js",
-		"/home/eduardo/Workspace/iMedia/config/initializers/inflections.rb"
+		"/home/eduardo/Workspace/iMedia/test/controllers/legal_profiles_controller_test.rb"
 	],
 	"find":
 	{
@@ -417,9 +404,10 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 99.0,
 		"where_history":
 		[
+			"/home/eduardo/Workspace/iMedia"
 		]
 	},
 	"find_state":
@@ -427,6 +415,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"legal_profile",
+			"bootstrap.css.map",
 			"legal_profile",
 			"      #@",
 			"Dashboard::",
@@ -490,143 +480,29 @@
 	"groups":
 	[
 		{
-			"selected": 6,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/helpers/legal_profiles_helper.rb",
+					"file": "config/database.yml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 438,
+						"buffer_size": 439,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								27,
-								27
+								105,
+								105
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "app/views/dashboard/legal_profiles/show.html.erb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 470,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								325,
-								325
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "app/views/dashboard/physical_profiles/show.html.erb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 501,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								334,
-								334
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "config/routes.rb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 754,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								401,
-								401
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "app/views/dashboard/physical_profiles/index.html.erb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1392,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								245,
-								245
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
+							"syntax": "Packages/YAML/YAML.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
@@ -638,80 +514,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "app/controllers/dashboard/physical_profiles_controller.rb",
+					"buffer": 1,
+					"file": "app/models/legal_profile.rb",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1804,
+						"buffer_size": 417,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1104,
-								1104
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "app/policies/physical_profile_policy.rb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 262,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								137,
-								137
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "app/models/user.rb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 619,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								288,
-								288
+								417,
+								417
 							]
 						],
 						"settings":
@@ -722,7 +538,93 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/views/layouts/application.html.erb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3527,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1596,
+								1596
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 304.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/views/dashboard/legal_profiles/_form.html.erb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2021,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1012,
+								1012
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 228.0,
+						"zoom_level": 1.0
+					},
 					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/models/person.rb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 152,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -779,6 +681,98 @@
 		"selected_items":
 		[
 			[
+				"app",
+				"app/assets/stylesheets/application.css"
+			],
+			[
+				"apphtm",
+				"app/views/layouts/application.html.erb"
+			],
+			[
+				"add",
+				"db/migrate/20150209213921_add_person_references_to_user.rb"
+			],
+			[
+				"legcon",
+				"app/controllers/dashboard/legal_profiles_controller.rb"
+			],
+			[
+				"_fo",
+				"app/views/dashboard/legal_profiles/_form.html.erb"
+			],
+			[
+				"per",
+				"app/models/person.rb"
+			],
+			[
+				"leg",
+				"app/models/legal_profile.rb"
+			],
+			[
+				"d",
+				"config/database.yml"
+			],
+			[
+				"applhtm",
+				"app/views/layouts/application.html.erb"
+			],
+			[
+				"physontr",
+				"app/controllers/dashboard/physical_profiles_controller.rb"
+			],
+			[
+				"legalcontr",
+				"app/controllers/dashboard/legal_profiles_controller.rb"
+			],
+			[
+				"legapol",
+				"app/policies/legal_profile_policy.rb"
+			],
+			[
+				"legalcon",
+				"app/controllers/dashboard/legal_profiles_controller.rb"
+			],
+			[
+				"outcon",
+				"app/controllers/maps/outdoors_controller.rb"
+			],
+			[
+				"contro",
+				"app/controllers/dashboard/legal_profiles_controller.rb"
+			],
+			[
+				"rou",
+				"config/routes.rb"
+			],
+			[
+				"hom",
+				"app/controllers/home_controller.rb"
+			],
+			[
+				"legac",
+				"app/controllers/dashboard/legal_profiles_controller.rb"
+			],
+			[
+				"see",
+				"db/seeds.rb"
+			],
+			[
+				"das",
+				"app/views/layouts/dashboard.html.erb"
+			],
+			[
+				"map",
+				"app/views/layouts/maps.html.erb"
+			],
+			[
+				"outcof",
+				"app/assets/javascripts/outdoors.js.coffee"
+			],
+			[
+				"dahs",
+				"app/controllers/dashboard/dashboard_controller.rb"
+			],
+			[
 				"user",
 				"app/models/user.rb"
 			],
@@ -801,10 +795,6 @@
 			[
 				"legal",
 				"app/models/legal_profile.rb"
-			],
-			[
-				"rou",
-				"config/routes.rb"
 			],
 			[
 				"routes",
@@ -875,20 +865,12 @@
 				"app/views/maps/outdoors/_form.html.erb"
 			],
 			[
-				"per",
-				"app/models/person.rb"
-			],
-			[
 				"_fom",
 				"app/views/dashboard/legal_profiles/_form.html.erb"
 			],
 			[
 				"index",
 				"app/views/dashboard/legal_profiles/index.html.erb"
-			],
-			[
-				"das",
-				"app/controllers/dashboard/dashboard_controller.rb"
 			],
 			[
 				"le",
@@ -939,14 +921,6 @@
 				"app/views/dashboard/legal_profiles/show.html.erb"
 			],
 			[
-				"add",
-				"db/migrate/20150209213921_add_person_references_to_user.rb"
-			],
-			[
-				"contro",
-				"app/controllers/maps/outdoors_controller.rb"
-			],
-			[
 				"ge",
 				"Gemfile"
 			],
@@ -995,10 +969,6 @@
 				"app/controllers/alunos_controller.rb"
 			],
 			[
-				"_fo",
-				"app/views/alunos/_form.html.erb"
-			],
-			[
 				"crea",
 				"db/migrate/20141218170315_create_profiles.rb"
 			],
@@ -1029,10 +999,6 @@
 			[
 				"pol",
 				"app/policies/application_policy.rb"
-			],
-			[
-				"app",
-				"app/controllers/application_controller.rb"
 			],
 			[
 				"apperb",
@@ -1117,7 +1083,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 465.0,
+	"side_bar_width": 256.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

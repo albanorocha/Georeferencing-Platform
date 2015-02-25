@@ -1,28 +1,44 @@
-<p id="notice"><%= notice %></p>
+<div>
+  <% flash.each do |name, msg| %>
+  <div class="alert alert-<%= name == :notice ? "success" : "warning" %>">
+    <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+  </div>
+  <% end %>
+</div>
 
-<p>
-  <%= image_tag @outdoor.image_url(:thumb).to_s %>
-</p>
+<h1>OUT -  <%= @outdoor.code %></h1>
+<hr>
 
-<p>
-  <strong>Code:</strong>
-  <%= @outdoor.code %>
-</p>
+<p class="text-center"><%= image_tag @outdoor.image_url(:thumb).to_s %></p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @outdoor.description %>
-</p>
+<div class="table-responsive">
+<table class="table table-bordered table-striped text-center table-hover">
 
-<p>
-  <strong>Address:</strong>
-  <%= @outdoor.address %>
-</p>
+  <tbody>
 
-<%= link_to 'Edit', edit_dashboard_outdoor_path(@outdoor) %> |
-<%= link_to 'Back', dashboard_outdoors_path %>
+      <tr>
+        <td><strong>Código</strong></td>  
+    <td><%= @outdoor.code %></td>
+      </tr>
+      <tr>
+        <td><strong>Empresa</strong></td> 
+    <td><%= @outdoor.media_company.person.name %></td>
+      </tr>
+      <tr>
+        <td><strong>Endereço</strong></td>  
+     <td> <%= @outdoor.address %></td>
+      </tr>
+      <tr>
+        <td><strong>Descrição</strong></td>  
+     <td> <%= @outdoor.description %></td>
+      </tr>
 
+        </tbody>
+</table>
+</div>
 
+<%= link_to 'Voltar', dashboard_outdoors_path, :class => "btn btn-default" %> |
+<%= link_to 'Editar', edit_dashboard_outdoor_path(@outdoor), :class => "btn btn-primary"%> 
 
 <%= javascript_tag do %>
   buildMap(<%= raw  @hash.to_json %>);

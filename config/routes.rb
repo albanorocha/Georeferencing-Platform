@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get '/contractor/sign_up', to: 'home#contractor_sign_up'
   post '/contractor/sign_up', to: 'home#contractor_create'
 
+  resources "contacts", only: [:create]
+  match 'mensage_sent', to: 'home#mensage_sent', via: [:post, :put] 
+
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
