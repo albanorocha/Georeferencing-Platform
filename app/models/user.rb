@@ -11,9 +11,14 @@ class User < ActiveRecord::Base
   	person.profile.type == 'MediaCompany'  	
   end
 
-  def contractor?
-  	person.profile.type == 'Contractor'  	
+  def agency?
+  	person.profile.type == 'Agency'  	
   end
+
+  def advertiser?
+    person.profile.type == 'Advertiser'   
+  end
+
 
   def manager?
   	person.profile.type == 'Manager'  	
@@ -24,4 +29,11 @@ class User < ActiveRecord::Base
   	person.profile_type == 'LegalProfile'  	
   end
 
+  def is_role? (role)
+    self.person.profile.type == role.to_s.camelize
+  end
+
+  def role?
+    person.profile.type
+  end
 end

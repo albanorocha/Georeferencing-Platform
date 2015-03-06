@@ -1,4 +1,4 @@
-class ContractorPolicy < ApplicationPolicy
+class AdvertiserPolicy < ApplicationPolicy
   
   class Scope < Scope
     def resolve

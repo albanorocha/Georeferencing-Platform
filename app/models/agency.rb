@@ -1,0 +1,1 @@
+class Agency < LegalProfile; end

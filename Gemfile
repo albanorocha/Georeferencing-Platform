@@ -44,6 +44,7 @@ gem 'rails_12factor', group: :production
 gem "twitter-bootstrap-rails"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+gem 'irbtools', require: false
 
 # Use unicorn as the app server
 # gem 'unicorn'

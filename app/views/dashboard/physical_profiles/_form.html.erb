@@ -51,7 +51,7 @@
 
   <div class="field">
     <%= f.label :type %><br>
-    <%= f.select :type, PhysicalProfile.types.map {|r| [r.humanize, r.camelcase]}, {} %>
+    <%= f.select :type, PhysicalProfile.types.map {|r| [r.humanize, r.camelcase]}, {}, disabled: @type != "PhysicalProfile"%>
   </div>
 
   <div class="actions">
