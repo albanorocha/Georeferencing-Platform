@@ -27,19 +27,65 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-         
-  <li> <%= link_to "Outdoor", dashboard_outdoors_path %> </li>
-  <li> <%= link_to "Dashboard", dashboard_root_path, 'data-no-turbolink' => true %> </li>
+
+    <li> <%= link_to " Medias", dashboard_outdoors_path, :class => 'fa fa-map-marker' %> </li>
   
-                     
-            <% if user_signed_in? %>
-            <li>
-              <a href="#">  <strong><%= current_user.email %></strong></a>
-            </li>
-            <li> <%= link_to "Sair", destroy_user_session_path, method: :delete %> </li>
-            <% else %>
-            <li> <%= link_to "Entrar", new_user_session_path  %> </li>
-            <% end %>
+    <li> <%= link_to " Dashboard", dashboard_root_path, :class => 'fa fa-tachometer', 'data-no-turbolink' => true %> </li>
+
+<li>
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-users"></i></a>
+                <ul class="dropdown-menu">    
+
+
+            <li><%= link_to " Perfis Fisico", dashboard_physical_profiles_path, :class => 'fa fa-user' %> </li>
+
+            <li> <%= link_to " Manager", dashboard_managers_path %> </li>
+
+            <li> <%= link_to " Secretary", dashboard_secretaries_path %> </li>
+
+<li role="presentation" class="divider"></li>
+
+            <li><%= link_to " Perfis Juridico", dashboard_legal_profiles_path , :class => 'fa fa-building' %> </li>
+
+            <li><%= link_to " Contractors", dashboard_contractors_path %> </li>
+
+             <li><%= link_to " Media Companys", dashboard_media_companies_path %> </li>
+
+          </ul>
+          </li>
+
+
+<li>
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cogs"></i></a>
+                <ul class="dropdown-menu">    
+
+<li><%= link_to "Advertisers", dashboard_physical_profiles_path %> </li>
+
+<li role="presentation" class="divider"></li>
+
+<li><%= link_to "Agency", dashboard_physical_profiles_path %> </li>
+
+<li role="presentation" class="divider"></li>
+
+<li><%= link_to "Media Company", dashboard_physical_profiles_path %> </li>
+
+          </ul>
+          </li>
+  
+<% if user_signed_in? %>
+       <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">         
+            <%= current_user.email %><span class="caret"></span></a>
+          <ul id="g-account-menu" class="dropdown-menu" role="menu">
+            <li><a href="#">Meu Perfil</a></li>
+            <li role="presentation" class="divider"></li>
+            <li><%= link_to "Sair", destroy_user_session_path, method: :delete, :class => 'fa fa-sign-out'  %></li>
+          </ul>
+        </li>
+<% else %>
+        <li> <%= link_to " Entrar", new_user_session_path, :class => 'fa fa-sign-in' %> </li>
+<% end %>
+
             
           </ul>
 
