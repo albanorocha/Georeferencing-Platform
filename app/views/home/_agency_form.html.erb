@@ -1,10 +1,10 @@
-<%= form_for( @contractor,  url: contractor_sign_up_path ) do |f| %>
-  <% if @contractor.errors.any? %>
+<%= form_for( @agency,  url: agency_sign_up_path ) do |f| %>
+  <% if @agency.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@contractor.errors.count, "error") %> prohibited this contractor from being saved:</h2>
+      <h2><%= pluralize(@agency.errors.count, "error") %> prohibited this agency from being saved:</h2>
 
       <ul>
-      <% @contractor.errors.full_messages.each do |message| %>
+      <% @agency.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>

@@ -2,8 +2,8 @@ Rails.application.routes.draw do
 
   root 'home#index'
   
-  get '/contractor/sign_up', to: 'home#contractor_sign_up'
-  post '/contractor/sign_up', to: 'home#contractor_create'
+  get '/agency/sign_up', to: 'home#agency_sign_up'
+  post '/agency/sign_up', to: 'home#agency_create'
 
   resources "contacts", only: [:create]
   match 'mensage_sent', to: 'home#mensage_sent', via: [:post, :put] 
@@ -19,7 +19,8 @@ Rails.application.routes.draw do
     resources :secretaries, controller: 'physical_profiles', type: 'Secretary'
     resources :legal_profiles
     resources :media_companies, controller: 'legal_profiles', type: 'MediaCompany' 
-    resources :contractors, controller: 'legal_profiles', type: 'Contractor'
+    resources :agencies, controller: 'legal_profiles', type: 'Agency'
+    resources :advertisers, controller: 'legal_profiles', type: 'Advertiser'
   end
   
   scope module: 'maps', as: 'dashboard', path: '/dashboard' do

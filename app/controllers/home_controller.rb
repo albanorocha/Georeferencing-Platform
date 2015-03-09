@@ -5,20 +5,23 @@ class HomeController < ApplicationController
     @contact = Contact.new
   end
 
-  def contractor_sign_up
-  	@contractor = Contractor.new
-  	@contractor.build_person
-  	@contractor.person.build_user
+  def agency_sign_up
+  	@agency = Agency.new
+  	@agency.build_person
+  	@agency.person.build_user
   end
 
-  def contractor_create
-  	@contractor = Contractor.new(contractor_params)
-  	@contractor.save
-  	@user = @contractor.person.user
-  	sign_in @user
-  	respond_with @contractor do |format|
-      format.html {redirect_to dashboard_root_path, notice: "Cadastrado com sucesso!"}
-    end 
+  def agency_create
+  	@agency = Agency.new(agency_params)
+    respond_to do |format|
+      if @agency.save
+        sign_in @agency.person.user
+        flash[:notice] = 'User was successfully created.'
+        format.html { redirect_to(dashboard_root_path) }
+      else
+        format.html { render action: "agency_sign_up" }
+      end
+    end
   end
 
   def mensage_sent
@@ -36,8 +39,8 @@ class HomeController < ApplicationController
 
   private
 
-    def contractor_params
-      params.require(:contractor).permit( :cnpj, 
+    def agency_params
+      params.require(:agency).permit( :cnpj, 
       :person_attributes => [:name, :telephone, 
         :user_attributes => [:email, :password, :password_confirmation]] )
     end

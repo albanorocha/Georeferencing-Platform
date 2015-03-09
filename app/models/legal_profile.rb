@@ -6,9 +6,10 @@ class LegalProfile < ActiveRecord::Base
 	accepts_nested_attributes_for :person
 
 	scope :media_companies, -> { where(type: 'MediaCompany') } 
-	scope :contractors, -> { where(type: 'Contractor') } 
+	scope :agencies, -> { where(type: 'Agency') } 
+	scope :advertisers, -> { where(type: 'Advertiser') } 
 
 	def self.types
-      %w(MediaCompany Contractor)
+      %w(MediaCompany Agency Advertiser)
     end
 end
