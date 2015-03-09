@@ -28,49 +28,12 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
 
-    <li> <%= link_to " Medias", dashboard_outdoors_path, :class => 'fa fa-map-marker' %> </li>
+    <li> <%= link_to " Novo", new_dashboard_outdoor_path, :class => 'fa fa-plus-circle' %> </li>
+
+    <li role="presentation" class="divider"></li>
   
-    <li> <%= link_to " Dashboard", dashboard_root_path, :class => 'fa fa-tachometer', 'data-no-turbolink' => true %> </li>
+    <li> <%= link_to "", dashboard_root_path, :class => 'fa fa-tachometer fa-lg', 'data-no-turbolink' => true %> </li>
 
-<li>
-<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-users"></i></a>
-                <ul class="dropdown-menu">    
-
-
-            <li><%= link_to " Perfis Fisico", dashboard_physical_profiles_path, :class => 'fa fa-user' %> </li>
-
-            <li> <%= link_to " Manager", dashboard_managers_path %> </li>
-
-            <li> <%= link_to " Secretary", dashboard_secretaries_path %> </li>
-
-<li role="presentation" class="divider"></li>
-
-            <li><%= link_to " Perfis Juridico", dashboard_legal_profiles_path , :class => 'fa fa-building' %> </li>
-
-            <li><%= link_to " Contractors", dashboard_contractors_path %> </li>
-
-             <li><%= link_to " Media Companys", dashboard_media_companies_path %> </li>
-
-          </ul>
-          </li>
-
-
-<li>
-<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cogs"></i></a>
-                <ul class="dropdown-menu">    
-
-<li><%= link_to "Advertisers", dashboard_physical_profiles_path %> </li>
-
-<li role="presentation" class="divider"></li>
-
-<li><%= link_to "Agency", dashboard_physical_profiles_path %> </li>
-
-<li role="presentation" class="divider"></li>
-
-<li><%= link_to "Media Company", dashboard_physical_profiles_path %> </li>
-
-          </ul>
-          </li>
   
 <% if user_signed_in? %>
        <li class="dropdown">
