@@ -8,7 +8,7 @@
 <br>
 
   <div class="table-responsive">
-  <table class="table table-bordered table-striped text-center table-hover">
+  <table class="table table-striped text-center table-hover">
     <thead>
       <tr>
         <th>Código</th>
@@ -24,10 +24,10 @@
           <td><%= outdoor.code %></td>
           <td><%= outdoor.media_company.person.name %></td>
           <td><%= outdoor.address %></td>
-          <td><%= link_to 'Ver', dashboard_outdoor_path(outdoor) %><i class="icon-search"></i><br>
-          <%= link_to 'Editar', edit_dashboard_outdoor_path(outdoor) %><i class="icon-pencil"></i>
-          <br>
-          <%= link_to 'Excluir', dashboard_outdoor_path(outdoor), method: :delete, data: { confirm: 'Deseja realmente excluir?' } %><i class="icon-trash"></i></td>
+          <td><%= link_to " ", dashboard_outdoor_path(outdoor), :class => 'fa fa-search' %>
+          <%= link_to " ", edit_dashboard_outdoor_path(outdoor), :class => 'fa fa-pencil' %>
+          <%= link_to " ", dashboard_outdoor_path(outdoor), :class => 'fa fa-times', method: :delete, data: { confirm: 'Deseja realmente excluir?' } %>
+          </td>
         </tr>
       <% end %>
     </tbody>
@@ -41,3 +41,4 @@
     buildMap(<%= raw  @hash.to_json %>);
   <% end %>
 <% end %>
+
