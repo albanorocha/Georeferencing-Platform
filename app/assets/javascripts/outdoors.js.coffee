@@ -49,6 +49,12 @@ panorama = undefined;
       markers = handler.addMarkers(markers)
   placeNewMarker latLng
 
+  panorama = handler.getMap().getStreetView()
+  panorama.setPov (
+    heading: 265
+    pitch: 0
+  )
+
 
 @buildNewMap = (markers) ->
   handler = Gmaps.build 'Google',  { markers: { clusterer: {gridSize: 20, maxZoom: 50} } }
@@ -64,6 +70,12 @@ panorama = undefined;
       markers = handler.addMarkers(markers)
       listenerMapClick = google.maps.event.addListenerOnce handler.getMap(), "click", (event) ->
         placeNewMarker event.latLng
+
+  panorama = handler.getMap().getStreetView()
+  panorama.setPov (
+    heading: 265
+    pitch: 0
+  )
 ### ------------------- End builded maps ------------------- ###
 
 ###
@@ -140,6 +152,20 @@ codeLatLng = (location) ->
   Build stree viewer panorama
 ###
 @toggleStreetView = (lat, lng) ->
+  position = new google.maps.LatLng(lat, lng);
+  panorama.setPosition position
+  toggle = panorama.getVisible()
+  if toggle is false
+    panorama.setVisible true
+  else
+    panorama.setVisible false
+
+###
+  Build stree viewer panorama
+###
+@newMarkerStreetView = () ->
+  lat = document.getElementById("outdoor_latitude").value
+  lng = document.getElementById("outdoor_longitude").value 
   position = new google.maps.LatLng(lat, lng);
   panorama.setPosition position
   toggle = panorama.getVisible()
