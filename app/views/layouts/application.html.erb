@@ -31,7 +31,7 @@
           <ul class="nav navbar-nav navbar-right">
          
 <% if user_signed_in? %>
-           <li> <%= link_to " Medias", dashboard_outdoors_path, :class => 'fa fa-map-marker' %> </li>
+           <li> <%= link_to " Medias", dashboard_outdoors_path, :class => 'fa fa-map-marker', 'data-no-turbolink' => true %> </li>
 
      <li> <%= link_to "", dashboard_root_path, :class => 'fa fa-tachometer fa-lg', 'data-no-turbolink' => true %> </li>
 
