@@ -75,8 +75,9 @@ placeNewMarker = (location) ->
     map: handler.getMap()
     animation: google.maps.Animation.DROP
     draggable: true
-    title: "Drag me!"
+    title: "Drag me!!"
   )
+
   handler.getMap().panTo(location)
   document.getElementById("outdoor_latitude").value = location.lat()
   document.getElementById("outdoor_longitude").value = location.lng()
