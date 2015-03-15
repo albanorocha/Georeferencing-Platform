@@ -17,7 +17,7 @@ class Maps::OutdoorsController < Maps::MapsController
       marker.lng outdoor.longitude
       marker.title   outdoor.code
       marker.picture({ 
-        url:    "/assets/marcador32.png",
+        url:    "/assets/images/marcador32.png",
         width:  32,
         height: 32
       })
@@ -39,7 +39,7 @@ class Maps::OutdoorsController < Maps::MapsController
       marker.lng outdoor.longitude
       marker.title   outdoor.code
       marker.picture({ 
-        url:    "/assets/marcador32.png",
+        url:    "/assets/images/marcador32.png",
         width:  32,
         height: 32
       })
@@ -79,7 +79,7 @@ class Maps::OutdoorsController < Maps::MapsController
         marker.lng outdoor.longitude
         marker.title   outdoor.code
         marker.picture({ 
-          url:    "/assets/marcador32.png",
+          url:    "/assets/images/marcador32.png",
           width:  32,
           height: 32
         })
