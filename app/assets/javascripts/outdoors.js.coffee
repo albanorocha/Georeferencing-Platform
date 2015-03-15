@@ -70,13 +70,11 @@ panorama = undefined;
   When click on a new map add a marker and put the new position
 ###
 placeNewMarker = (location) ->
-  image = "/assets/marcador_red.png" 
   marker = new google.maps.Marker(
     position: location
     map: handler.getMap()
     animation: google.maps.Animation.DROP
     draggable: true
-    icon: image
     title: "Drag me!"
   )
   handler.getMap().panTo(location)
