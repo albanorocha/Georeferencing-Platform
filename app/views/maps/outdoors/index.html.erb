@@ -1,4 +1,4 @@
-<h1>iMedia Outdoors </h1>
+<h1>inMedia Outdoors </h1>
 <hr>
 <div class="container">
   <div class="row">
@@ -23,7 +23,7 @@
         <tr>
           <td><%= outdoor.code %></td>
           <td><%= outdoor.media_company.person.name %></td>
-          <td><%= outdoor.address %></td>
+          f
           <td><%= link_to " ", dashboard_outdoor_path(outdoor), :class => 'fa fa-search' %>
           <%= link_to " ", edit_dashboard_outdoor_path(outdoor), :class => 'fa fa-pencil' %>
           <%= link_to " ", dashboard_outdoor_path(outdoor), :class => 'fa fa-times', method: :delete, data: { confirm: 'Deseja realmente excluir?' } %>
