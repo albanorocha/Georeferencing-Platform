@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>In Media - Soluções em MOOH</title>
+  <title>InMedia - Soluções em MOOH</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= favicon_link_tag "fav.ico", type: 'image/vnd.microsoft.icon'%>
@@ -27,7 +27,7 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
   
-    <li> <%= link_to " Medias", dashboard_outdoors_path, :class => 'fa fa-map-marker' %> </li>
+    <li> <%= link_to " Medias", dashboard_outdoors_path, :class => 'fa fa-map-marker', 'data-no-turbolink' => true %> </li>
 
   <li> <%= link_to " Dashboard", dashboard_root_path, :class => 'fa fa-tachometer', 'data-no-turbolink' => true %> </li>
 

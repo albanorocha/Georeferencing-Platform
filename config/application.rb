@@ -17,7 +17,7 @@ module IMedia
     # config.time_zone = 'Central Time (US & Canada)'
     
     config.i18n.default_locale = :'pt-BR'
-    config.assets.initialize_on_precompile = false
+    config.assets.initialize_on_precompile = true
     
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
