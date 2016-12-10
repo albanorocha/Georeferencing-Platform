@@ -1,3 +1,3 @@
 == Georeferencing-Platform
 
-Georreferecing platform built with google maps API for manage advertising points. The system is a kind of e-commerce of MOOH. 
+Web application built with Ruby on Rails and Google Maps API for manage advertising points. The system is a kind of e-commerce of MOOH.
